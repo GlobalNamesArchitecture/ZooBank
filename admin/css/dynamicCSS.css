@@ -1,0 +1,141 @@
+/* 4/22/2010 - added menu_btn1 for dynamic CSS menu */
+
+.text1    {text-decoration: none; color: Black; font-family: Verdana; font-size: small; 	font-weight : bold;
+}
+.text2	  {text-decoration: none; color: Black; font-family:Verdana; font-size: small;
+}
+ .cellmed {
+     	color: Black;
+     	font-family: Verdana;
+     	font-size: small;
+     	font-weight : bold;
+       }
+  .cellsm {
+       color: Black; 
+       font-family: Verdana; 
+       font-size: smaller; 
+       }
+  H3 {
+       color: Black; 
+       font-family:Verdana;
+       }
+  H4 {
+       color: Black; 
+       font-family:Verdana;
+       }
+       .celllg {
+       color: Black; 
+       font-family: Verdana; 
+       font-size: medium; 
+       }
+   .cellxsm {
+       color: Black; 
+       font-family: Verdana; 
+       font-size: xx-small; 
+       }
+ .cellmed1 {
+     	color: Black;
+     	font-family: Verdana;
+     	font-size: small;
+      }
+         H2 {
+       color: Black; 
+       font-family:Verdana;
+       }
+ #LayerDisplayDiv{visibility:visible; }
+
+ 
+ .menubar {background-color:black;}
+.menu_btn1 {
+display: inline;
+margin: 0;
+padding: 0;
+float: left;
+font: bold 13px Arial;
+/*width: 100%;*/
+height:36px;
+color:white;
+border: 1px solid #625e00;
+border-width: 0px 0;
+background: black url(/App/Admin/Admin_Images/menubtngradient.gif) center center repeat-x;
+}
+
+.menu_btn1  a{
+float: left;
+color: white;
+padding: 9px 11px;
+text-decoration: none;
+border-right: 1px solid white;
+}
+
+.menu_btn1  a:visited{
+color: white;
+}
+
+.menu_btn1 a:hover, a.current{
+color: white;
+background: transparent url(/App/Admin/Admin_Images/menubtngradient_on.gif) center center repeat-x;
+}
+	 
+
+/*label { display: block; width: 15em; float: left; }*/
+
+div#box{width: 28em;padding: 30px  0;margin:1 auto;padding-left:2px;
+  text-align:left;background: #9CC0FF url(/App/Admin/Admin_Images/gradient.png) repeat-x 0 -5px}
+
+div#filmstrip{background: #000000;margin:3px auto; text-align:center;}
+
+/*div#content{background: #4DFFD2;float:left;width:780px;padding-right:20px;padding-left:20px;padding:10px 10;margin:5px 2;}
+div#header{background: #4DD2FF;padding: 10px;text-align:center}
+div#footer{background: #009DD1;clear:both;padding:5px 0;text-align:center;padding-top:10px;}
+div#container{background:#FFF;margin: 0 auto;padding:5px;text-align:left;}
+div#nav{background: #FFD24D;float:right;padding:10px 5;margin:5px 5;}*/
+
+
+/*	A:visited img {FILTER: "Gray"; border-thickness: 1px; border-color: #ff0000}
+.imgborder:link img { border: 1px solid #999999; background-color: #000000; }
+.imgborder:visited img { border: 1px solid #999999; filter: "Gray"; }
+.imgborder:active img { border: 1px solid #999999; filter: "Gray"; }
+.imgborder:hover img { border: 1px solid #000000; }
+*/
+
+.listStyle
+{
+	font-family:Verdana,Arial;
+	font-size:7pt;
+	border:1px solid black;
+	padding: 1px  0;
+}
+
+.listItemStyle
+{
+	cursor:pointer;
+	padding:6px 0px 6px 0px;
+	color:#003399;
+}
+
+
+.listItemKey
+{
+	text-align:left;
+	font-weight:bold;
+	padding-left:0px;
+}
+
+.listItemValue
+{
+	padding-left:2px;
+	text-align:right;
+}
+
+label.error {
+	float: none;
+	width:200px;
+	color: red;
+	padding-left: .5em;
+	vertical-align: top;
+	font-family:Verdana;
+}
+input.error {
+	border: 2px solid red;
+}

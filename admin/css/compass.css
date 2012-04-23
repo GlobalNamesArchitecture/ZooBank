@@ -1,0 +1,1410 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 17, ../../../../../.rvm/gems/ruby-1.9.3-p125@zoobank/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* line 20, ../../../../../.rvm/gems/ruby-1.9.3-p125@zoobank/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+body {
+  line-height: 1;
+}
+
+/* line 22, ../../../../../.rvm/gems/ruby-1.9.3-p125@zoobank/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 24, ../../../../../.rvm/gems/ruby-1.9.3-p125@zoobank/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 26, ../../../../../.rvm/gems/ruby-1.9.3-p125@zoobank/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 28, ../../../../../.rvm/gems/ruby-1.9.3-p125@zoobank/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 101, ../../../../../.rvm/gems/ruby-1.9.3-p125@zoobank/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 30, ../../../../../.rvm/gems/ruby-1.9.3-p125@zoobank/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 114, ../../../../../.rvm/gems/ruby-1.9.3-p125@zoobank/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* colors */
+/* modular scale:
+-2 -1 0  1  2  3  4  5  6  7  8
+ 7  9 11 14 18 23 29 37 47 59 75
+
+*/
+/* line 29, ../../sass/_typography.scss */
+abbr {
+  font-variant: small-caps;
+}
+
+/* line 33, ../../sass/_typography.scss */
+body {
+  font-family: "Open Sans", Arial, Verdana, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+/* line 38, ../../sass/_typography.scss */
+h2 {
+  font-family: Baskerville, Garamond, Palatino, "Palatino Linotype", "Hoefler Text", "Times New Roman", serif;
+  font-variant-ligatures: common-ligatures;
+  text-rendering: optimizeLegibility;
+  font-size: 29px;
+  line-height: 37px;
+}
+
+/* line 45, ../../sass/_typography.scss */
+em {
+  font-style: italic;
+}
+
+/* line 48, ../../sass/_typography.scss */
+.logo {
+  font-family: UniversLTStd-Cn;
+  font-size: 47px;
+  line-height: 59px;
+}
+
+/* line 54, ../../sass/_typography.scss */
+nav {
+  font-size: 14px;
+}
+
+/* line 58, ../../sass/_typography.scss */
+.introduction {
+  font-family: Baskerville, Garamond, Palatino, "Palatino Linotype", "Hoefler Text", "Times New Roman", serif;
+  font-variant-ligatures: common-ligatures;
+  text-rendering: optimizeLegibility;
+  font-size: 23px;
+  line-height: 29.9px;
+}
+
+/* line 64, ../../sass/_typography.scss */
+.tagline {
+  font-size: 47px;
+  line-height: 51.7px;
+}
+
+/* line 69, ../../sass/_typography.scss */
+.cta {
+  font-size: 29px;
+}
+
+/* line 74, ../../sass/_typography.scss */
+.uniForm .formHint {
+  font-size: 11px;
+  line-height: 14px;
+}
+
+/* line 79, ../../sass/_typography.scss */
+.primaryAction {
+  font-family: "Open Sans", Arial, Verdana, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+/* line 84, ../../sass/_typography.scss */
+.secondaryAction {
+  font-family: "Open Sans", Arial, Verdana, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+/* line 91, ../../sass/_typography.scss */
+.biblio-entry {
+  font-size: 11px;
+  line-height: 18px;
+}
+
+/* line 97, ../../sass/_typography.scss */
+.actSummary .biblio-entry {
+  line-height: 14px;
+}
+
+/* line 100, ../../sass/_typography.scss */
+.lsid {
+  font-family: Pragmata, Menlo, "DejaVu LGC Sans Mono", "DejaVu LGC Sans Mono", "DejaVu Sans Mono", Consolas, "Everson Mono", "Lucida Console", "Andale Mono", "Nimbus Mono L", "Liberation Mono", FreeMono, "Lucida Sans Typewriter", "Lucida Typewriter", "Osaka Monospaced", "Bitstream Vera Sans Mono", Courier, "New Courier", monospace;
+}
+
+/* line 105, ../../sass/_typography.scss */
+.searchResults .actName {
+  line-height: 23px;
+}
+
+/* ------------------------------------------------------------------------------
+
+   Copyright (c) 2010, Dragan Babic
+   
+   Permission is hereby granted, free of charge, to any person
+   obtaining a copy of this software and associated documentation
+   files (the "Software"), to deal in the Software without
+   restriction, including without limitation the rights to use,
+   copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the
+   Software is furnished to do so, subject to the following
+   conditions:
+   
+   The above copyright notice and this permission notice shall be
+   included in all copies or substantial portions of the Software.
+   
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+   OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+   NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+   HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+   WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+   OTHER DEALINGS IN THE SOFTWARE.
+
+   ------------------------------------------------------------------------------ */
+/* #############################   GENERALS   ################################### */
+/* ------------------------------------------------------------------------------ */
+/* line 30, ../../sass/_uni-form.scss */
+.uniForm {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  /* reset stuff */
+  /* Some generals and more resets */
+  /* This are the main units that contain form elements */
+  /* Clear all floats */
+}
+/* line 34, ../../sass/_uni-form.scss */
+.uniForm fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 39, ../../sass/_uni-form.scss */
+.uniForm fieldset legend {
+  margin: 0;
+  padding: 0;
+}
+/* line 43, ../../sass/_uni-form.scss */
+.uniForm .ctrlHolder, .uniForm .buttonHolder {
+  margin: 0;
+  padding: 0;
+  clear: both;
+}
+/* line 50, ../../sass/_uni-form.scss */
+.uniForm:after,
+.uniForm .buttonHolder:after,
+.uniForm .ctrlHolder:after,
+.uniForm .ctrlHolder .multiField:after,
+.uniForm .inlineLabel:after {
+  content: ".";
+  display: block;
+  height: 0;
+  line-height: 0;
+  font-size: 0;
+  clear: both;
+  min-height: 0;
+  visibility: hidden;
+}
+/* line 53, ../../sass/_uni-form.scss */
+.uniForm label,
+.uniForm button {
+  cursor: pointer;
+}
+
+/* ------------------------------------------------------------------------------ */
+/* ##########################   DEFAULT LAYOUT   ################################ */
+/* ------------------------------------------------------------------------------ */
+/*       Styles for form controls where labels are above the input elements       */
+/* ------------------------------------------------------------------------------ */
+/* line 62, ../../sass/_uni-form.scss */
+.uniForm {
+  /* Float the input elements */
+  /* Read-Only output */
+  /* Postition the hints */
+  /* Position the elements inside combo boxes (multiple inputs/selects/checkboxes/radio buttons per unit) */
+  /* Alternate layout */
+  /* Required fields asterisk styling */
+}
+/* line 64, ../../sass/_uni-form.scss */
+.uniForm label,
+.uniForm .label {
+  display: block;
+  float: none;
+  margin: 0 0 .5em 0;
+  padding: 0;
+  line-height: 100%;
+  width: auto;
+}
+/* line 78, ../../sass/_uni-form.scss */
+.uniForm .textInput,
+.uniForm .fileUpload,
+.uniForm .selectInput,
+.uniForm select,
+.uniForm textarea {
+  float: left;
+  width: 53%;
+  margin: 0;
+}
+/* line 85, ../../sass/_uni-form.scss */
+.uniForm .readOnlyLabel {
+  margin: 0;
+  font-size: 1em;
+  font-weight: bold;
+}
+/* line 90, ../../sass/_uni-form.scss */
+.uniForm .readOnly {
+  font-size: .85em;
+}
+/* line 93, ../../sass/_uni-form.scss */
+.uniForm .readOnly .choiceLabel {
+  color: #777;
+  text-transform: uppercase;
+  font-size: .75em;
+  letter-spacing: .15em;
+}
+/* line 102, ../../sass/_uni-form.scss */
+.uniForm .formHint {
+  float: right;
+  width: 43%;
+  margin: 0;
+  clear: none;
+}
+/* line 110, ../../sass/_uni-form.scss */
+.uniForm ul {
+  float: left;
+  width: 53%;
+  margin: 0;
+  padding: 0;
+}
+/* line 116, ../../sass/_uni-form.scss */
+.uniForm ul li {
+  margin: 0 0 0.5em 0;
+  list-style: none;
+}
+/* line 120, ../../sass/_uni-form.scss */
+.uniForm ul li label {
+  margin: 0;
+  float: none;
+  display: block;
+  overflow: visible;
+}
+/* line 131, ../../sass/_uni-form.scss */
+.uniForm ul.alternate li {
+  float: left;
+  width: 30%;
+  margin-right: 3%;
+}
+/* line 136, ../../sass/_uni-form.scss */
+.uniForm ul.alternate li label {
+  float: none;
+  display: block;
+  width: 98%;
+}
+/* line 149, ../../sass/_uni-form.scss */
+.uniForm ul .textInput,
+.uniForm ul .selectInput,
+.uniForm ul select,
+.uniForm ul.alternate .textInput,
+.uniForm ul.alternate .selectInput,
+.uniForm ul.alternate select {
+  width: 98%;
+  margin-top: .5em;
+  display: block;
+  float: none;
+}
+/* line 158, ../../sass/_uni-form.scss */
+.uniForm label em,
+.uniForm .label em {
+  float: left;
+  width: 1em;
+  margin: 0 0 0 -1em;
+}
+
+/* ------------------------------------------------------------------------------ */
+/* #########################   ALTERNATE LAYOUT   ############################### */
+/* ------------------------------------------------------------------------------ */
+/*    Styles for form controls where labels are in line with the input elements   */
+/*    Set the class of the parent (preferably to a fieldset) to .inlineLabels     */
+/* ------------------------------------------------------------------------------ */
+/* line 172, ../../sass/_uni-form.scss */
+.uniForm .inlineLabels {
+  /* Float the input elements */
+  /* Postition the hints */
+  /* Position the elements inside combo boxes (multiple inputs/selects/checkboxes/radio buttons per unit) */
+  /* Alternate layout */
+  /* Required fields asterisk styling */
+}
+/* line 175, ../../sass/_uni-form.scss */
+.uniForm .inlineLabels label,
+.uniForm .inlineLabels .label,
+.uniForm .inlineLabels .readOnlyLabel {
+  float: left;
+  margin: .3em 2% 0 0;
+  padding: 0;
+  line-height: 1;
+  position: relative;
+  width: 32%;
+}
+/* line 184, ../../sass/_uni-form.scss */
+.uniForm .inlineLabels .readOnlyLabel {
+  margin: 0;
+}
+/* line 191, ../../sass/_uni-form.scss */
+.uniForm .inlineLabels .textInput,
+.uniForm .inlineLabels .fileUpload,
+.uniForm .inlineLabels .selectInput,
+.uniForm .inlineLabels select,
+.uniForm .inlineLabels textarea {
+  float: left;
+  width: 64%;
+}
+/* line 197, ../../sass/_uni-form.scss */
+.uniForm .inlineLabels .formHint {
+  clear: both;
+  float: none;
+  width: auto;
+  margin-left: 34%;
+  position: static;
+}
+/* line 206, ../../sass/_uni-form.scss */
+.uniForm .inlineLabels ul {
+  float: left;
+  width: 66%;
+}
+/* line 209, ../../sass/_uni-form.scss */
+.uniForm .inlineLabels ul li {
+  margin: .5em 0;
+}
+/* line 211, ../../sass/_uni-form.scss */
+.uniForm .inlineLabels ul li label {
+  float: none;
+  display: block;
+  width: 100%;
+}
+/* line 216, ../../sass/_uni-form.scss */
+.uniForm .inlineLabels ul.alternate li {
+  margin-right: 3%;
+  margin-top: .25em;
+}
+/* line 222, ../../sass/_uni-form.scss */
+.uniForm .inlineLabels ul li label .textInput,
+.uniForm .inlineLabels ul li label textarea,
+.uniForm .inlineLabels ul li label select {
+  float: none;
+  display: block;
+  width: 98%;
+}
+/* line 228, ../../sass/_uni-form.scss */
+.uniForm .inlineLabels .readOnly {
+  float: right;
+  width: 66%;
+}
+/* line 235, ../../sass/_uni-form.scss */
+.uniForm .inlineLabels label em,
+.uniForm .inlineLabels .label em {
+  display: block;
+  float: none;
+  margin: 0;
+  position: absolute;
+  right: 0;
+}
+
+/* ----------------------------------------------------------------------------- */
+/* ########################### Additional Stuff ################################ */
+/* ----------------------------------------------------------------------------- */
+/* line 242, ../../sass/_uni-form.scss */
+.uniForm {
+  /* Generals */
+  /* .inlineLabel is used for inputs within labels - checkboxes and radio buttons */
+  /* When you don't want to use a label */
+  /* Classes for control of the widths of the fields */
+  /* Large is default and should match the value you set for .textInput, textarea or select */
+  /* Columns */
+}
+/* line 244, ../../sass/_uni-form.scss */
+.uniForm legend {
+  color: inherit;
+}
+/* line 246, ../../sass/_uni-form.scss */
+.uniForm .secondaryAction {
+  float: left;
+}
+/* line 253, ../../sass/_uni-form.scss */
+.uniForm .inlineLabel input,
+.uniForm .inlineLabels .inlineLabel input,
+.uniForm .blockLabels .inlineLabel input,
+.uniForm label input {
+  float: none;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+/* line 257, ../../sass/_uni-form.scss */
+.uniForm .buttonHolder .inlineLabel,
+.uniForm .buttonHolder label {
+  float: left;
+  margin: .5em 0 0 0;
+  width: auto;
+  max-width: 60%;
+  text-align: left;
+}
+/* line 267, ../../sass/_uni-form.scss */
+.uniForm .inlineLabels .noLabel ul {
+  margin-left: 34%;
+  /* Match to width of label + gap to field */
+}
+/* line 272, ../../sass/_uni-form.scss */
+.uniForm .small {
+  width: 30% !important;
+}
+/* line 273, ../../sass/_uni-form.scss */
+.uniForm .medium {
+  width: 45% !important;
+}
+/* line 275, ../../sass/_uni-form.scss */
+.uniForm .auto {
+  width: auto !important;
+  height: auto !important;
+}
+/* line 278, ../../sass/_uni-form.scss */
+.uniForm .small,
+.uniForm .medium,
+.uniForm .auto {
+  margin-right: 4px;
+}
+/* line 281, ../../sass/_uni-form.scss */
+.uniForm .col {
+  float: left;
+}
+/* line 282, ../../sass/_uni-form.scss */
+.uniForm .col {
+  width: 50%;
+}
+
+/* a 12-column grid */
+/* each column is 4em wide */
+/* 1em gutters between columns */
+/* 1em padding at the edges of the page as well */
+/* line 13, ../../sass/_grid.scss */
+.container {
+  *zoom: 1;
+  margin: auto;
+  width: 73em;
+  max-width: 100%;
+}
+/* line 38, ../../../../../.rvm/gems/ruby-1.9.3-p125@zoobank/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+.container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* line 17, ../../sass/_grid.scss */
+header .introduction {
+  clear: both;
+  margin-left: 1.37%;
+  margin-right: 1.37%;
+}
+
+/* line 21, ../../sass/_grid.scss */
+.cta {
+  display: inline;
+  float: left;
+  width: 39.726%;
+  margin-right: 1.37%;
+}
+
+/* line 26, ../../sass/_grid.scss */
+form#registration .ctrlHolder {
+  clear: both;
+  margin-left: 1.37%;
+  margin-right: 1.37%;
+}
+/* line 32, ../../sass/_grid.scss */
+form#registration .ctrlHolder ul li .formHint {
+  float: none;
+  display: block;
+  width: auto;
+  margin-right: auto;
+  padding-left: 0%;
+}
+/* line 37, ../../sass/_grid.scss */
+form#registration .ctrlHolder ul li label {
+  float: none;
+  display: block;
+  width: auto;
+  margin-right: auto;
+  clear: both;
+  margin-left: 1.37%;
+  margin-right: 1.37%;
+}
+/* line 45, ../../sass/_grid.scss */
+form#registration .ui-tabs-nav {
+  clear: both;
+  margin-left: 1.37%;
+  margin-right: 1.37%;
+  padding-left: 16.438%;
+}
+/* line 50, ../../sass/_grid.scss */
+form#registration .buttonHolder {
+  clear: both;
+  margin-left: 1.37%;
+  margin-right: 1.37%;
+  padding-left: 16.438%;
+}
+/* line 55, ../../sass/_grid.scss */
+form#registration .infoMsg {
+  clear: both;
+  margin-left: 1.37%;
+  margin-right: 1.37%;
+  padding-left: 16.438%;
+}
+/* line 63, ../../sass/_grid.scss */
+form#registration .inlineLabels label,
+form#registration .inlineLabels .label,
+form#registration .inlineLabels .readORegisternlyLabel {
+  display: inline;
+  float: left;
+  width: 15.493%;
+  margin-right: 1.408%;
+}
+/* line 72, ../../sass/_grid.scss */
+form#registration .inlineLabels .textInput,
+form#registration .inlineLabels .fileUpload,
+form#registration .inlineLabels .selectInput,
+form#registration .inlineLabels select,
+form#registration .inlineLabels textarea,
+form#registration .inlineLabels ul {
+  display: inline;
+  float: left;
+  width: 40.845%;
+  margin-right: 1.408%;
+}
+/* line 76, ../../sass/_grid.scss */
+form#registration .inlineLabels ul.citationList {
+  display: inline;
+  float: left;
+  width: 66.197%;
+  margin-right: 1.408%;
+}
+/* line 82, ../../sass/_grid.scss */
+form#registration .inlineLabels .error .errorHint {
+  display: inline;
+  float: left;
+}
+/* line 91, ../../sass/_grid.scss */
+form#registration .inlineLabels ul .textInput,
+form#registration .inlineLabels ul .fileUpload,
+form#registration .inlineLabels ul .selectInput,
+form#registration .inlineLabels ul select,
+form#registration .inlineLabels ul textarea {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+/* line 102, ../../sass/_grid.scss */
+form#registration .inlineLabels ul .subInput .textInput,
+form#registration .inlineLabels ul .subInput .fileUpload,
+form#registration .inlineLabels ul .subInput .selectInput,
+form#registration .inlineLabels ul .subInput select,
+form#registration .inlineLabels ul .subInput textarea {
+  margin-left: 0;
+  margin-right: 0;
+  width: 70%;
+}
+/* line 111, ../../sass/_grid.scss */
+form#registration .inlineLabels .formHint {
+  display: inline;
+  float: left;
+  width: 83.099%;
+  margin-right: 1.408%;
+  padding-left: 16.901%;
+  margin-left: 0;
+}
+
+/* line 119, ../../sass/_grid.scss */
+.okMsg {
+  clear: both;
+  margin-left: 1.37%;
+  margin-right: 1.37%;
+}
+
+/* line 123, ../../sass/_grid.scss */
+.registerAnother {
+  clear: both;
+  margin-left: 1.37%;
+  margin-right: 1.37%;
+}
+/* line 126, ../../sass/_grid.scss */
+.registerAnother p {
+  clear: both;
+}
+
+/* line 131, ../../sass/_grid.scss */
+#registrationForm .optionalInformation .textInput {
+  display: inline;
+  float: left;
+  width: 15.493%;
+  margin-right: 1.408%;
+}
+
+/* line 135, ../../sass/_grid.scss */
+.actSummary {
+  clear: both;
+  margin-left: 1.37%;
+  margin-right: 1.37%;
+}
+
+/* line 139, ../../sass/_grid.scss */
+.searchResults {
+  clear: both;
+  margin-left: 1.37%;
+  margin-right: 1.37%;
+}
+
+/* line 3, ../../sass/_uni-form-theme.scss */
+.uniForm fieldset {
+  padding: 1em 0;
+}
+/* line 7, ../../sass/_uni-form-theme.scss */
+.uniForm .ctrlHolder {
+  padding: 0.5em 0;
+}
+/* line 11, ../../sass/_uni-form-theme.scss */
+.uniForm .ctrlHolder.focused {
+  background-color: #ffe9b1;
+}
+/* line 16, ../../sass/_uni-form-theme.scss */
+.uniForm .ctrlHolder ul li.subInput {
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 20, ../../sass/_uni-form-theme.scss */
+.uniForm .ctrlHolder ul li.subInput .label,
+.uniForm .ctrlHolder ul li.subInput label {
+  display: inline;
+  float: left !important;
+  margin-top: 0;
+}
+/* line 26, ../../sass/_uni-form-theme.scss */
+.uniForm .ctrlHolder ul li.subInput input {
+  margin-top: 0;
+}
+/* line 29, ../../sass/_uni-form-theme.scss */
+.uniForm .ctrlHolder ul li.subInput input.textInput {
+  width: 60%;
+}
+/* line 36, ../../sass/_uni-form-theme.scss */
+.uniForm .ctrlHolder ul.alternate.dateSelect li {
+  width: auto;
+}
+/* line 38, ../../sass/_uni-form-theme.scss */
+.uniForm .ctrlHolder ul.alternate .formHint {
+  float: none;
+}
+/* line 39, ../../sass/_uni-form-theme.scss */
+.uniForm .ctrlHolder ul.alternate .errorHint {
+  height: 16px;
+  width: 16px;
+  margin-top: 0.5em;
+  padding: 0;
+  text-indent: -9999em;
+  overflow: hidden;
+}
+/* line 45, ../../sass/_uni-form-theme.scss */
+.uniForm label em,
+.uniForm .label em {
+  float: none;
+  width: auto;
+  margin: auto;
+  color: #ff8d6d;
+  font-style: normal;
+}
+/* line 48, ../../sass/_uni-form-theme.scss */
+.uniForm .errorHint {
+  display: none;
+  color: #cf390a;
+  background: url(../images/icon-error.png) left center no-repeat;
+  padding-left: 20px;
+  line-height: 16px;
+}
+/* line 56, ../../sass/_uni-form-theme.scss */
+.uniForm .formHint {
+  color: #888888;
+}
+/* line 63, ../../sass/_uni-form-theme.scss */
+.uniForm .inlineLabels label,
+.uniForm .inlineLabels .label,
+.uniForm .inlineLabels .readOnlyLabel {
+  text-align: right;
+}
+/* line 66, ../../sass/_uni-form-theme.scss */
+.uniForm .inlineLabels label em,
+.uniForm .inlineLabels .label em,
+.uniForm .inlineLabels .readOnlyLabel em {
+  position: static;
+  display: inline;
+}
+/* line 73, ../../sass/_uni-form-theme.scss */
+.uniForm .inlineLabels ul li {
+  display: block;
+  margin-top: 0;
+}
+/* line 74, ../../sass/_uni-form-theme.scss */
+.uniForm .inlineLabels ul.alternate li {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+/* line 78, ../../sass/_uni-form-theme.scss */
+.uniForm .inlineLabels ul label,
+.uniForm .inlineLabels ul .label,
+.uniForm .inlineLabels ul .readOnlyLabel {
+  text-align: left;
+}
+
+/* line 85, ../../sass/_uni-form-theme.scss */
+.message, .okMsg, .errorMsg {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  padding: 1em;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 1em;
+}
+
+/* line 93, ../../sass/_uni-form-theme.scss */
+.okMsg {
+  background-color: #ddffc6;
+  border-color: #b6e05c;
+  color: #6d990f;
+}
+
+/* line 100, ../../sass/_uni-form-theme.scss */
+.errorMsg {
+  border-color: #ff8d6d;
+  background-color: #ffbcb6;
+  color: #cf390a;
+}
+/* line 106, ../../sass/_uni-form-theme.scss */
+.errorMsg h3 {
+  margin-bottom: 1em;
+}
+/* line 107, ../../sass/_uni-form-theme.scss */
+.errorMsg ol {
+  list-style: disc inside;
+}
+
+/* line 109, ../../sass/_uni-form-theme.scss */
+.infoMsg p {
+  padding: 0.7em 0 0.7em 30px;
+  margin-left: -5px;
+  color: #31309c;
+}
+/* line 114, ../../sass/_uni-form-theme.scss */
+.infoMsg p:first-child {
+  background: url(../images/icon-info.png) left center no-repeat;
+}
+
+/* line 118, ../../sass/_uni-form-theme.scss */
+.uniForm .primaryAction,
+.primaryAction {
+  font-size: 18px;
+  padding: 0.3em 1.5em;
+  display: inline-block;
+  cursor: pointer;
+  line-height: 1.5;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ffcb42;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffcb42), color-stop(100%, #ffbd0f));
+  background: -webkit-linear-gradient(#ffcb42, #ffbd0f);
+  background: -moz-linear-gradient(#ffcb42, #ffbd0f);
+  background: -o-linear-gradient(#ffcb42, #ffbd0f);
+  background: -ms-linear-gradient(#ffcb42, #ffbd0f);
+  background: linear-gradient(#ffcb42, #ffbd0f);
+  -moz-box-shadow: #ffe08f 0 1px 0 inset;
+  -webkit-box-shadow: #ffe08f 0 1px 0 inset;
+  -o-box-shadow: #ffe08f 0 1px 0 inset;
+  box-shadow: #ffe08f 0 1px 0 inset;
+  border: 1px solid #f4b100;
+  color: #fff8e7;
+  text-shadow: #bc8900 0 -1px 0;
+  text-decoration: none;
+}
+/* line 28, ../../../../../.rvm/gems/ruby-1.9.3-p125@zoobank/gems/sassy-buttons-0.0.9/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
+.uniForm .primaryAction:hover,
+.primaryAction:hover {
+  background-color: #f4b100;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffc428), color-stop(100%, #f4b100));
+  background: -webkit-linear-gradient(#ffc428, #f4b100);
+  background: -moz-linear-gradient(#ffc428, #f4b100);
+  background: -o-linear-gradient(#ffc428, #f4b100);
+  background: -ms-linear-gradient(#ffc428, #f4b100);
+  background: linear-gradient(#ffc428, #f4b100);
+}
+/* line 31, ../../../../../.rvm/gems/ruby-1.9.3-p125@zoobank/gems/sassy-buttons-0.0.9/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
+.uniForm .primaryAction:active,
+.primaryAction:active {
+  -moz-box-shadow: #e5a600 0 1px 2px inset;
+  -webkit-box-shadow: #e5a600 0 1px 2px inset;
+  -o-box-shadow: #e5a600 0 1px 2px inset;
+  box-shadow: #e5a600 0 1px 2px inset;
+}
+/* line 122, ../../sass/_uni-form-theme.scss */
+.uniForm .primaryAction.small,
+.primaryAction.small {
+  font-size: 14px;
+  padding: 0.3em 1.5em;
+  display: inline-block;
+  cursor: pointer;
+  line-height: 1.5;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ffcb42;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffcb42), color-stop(100%, #ffbd0f));
+  background: -webkit-linear-gradient(#ffcb42, #ffbd0f);
+  background: -moz-linear-gradient(#ffcb42, #ffbd0f);
+  background: -o-linear-gradient(#ffcb42, #ffbd0f);
+  background: -ms-linear-gradient(#ffcb42, #ffbd0f);
+  background: linear-gradient(#ffcb42, #ffbd0f);
+  -moz-box-shadow: #ffe08f 0 1px 0 inset;
+  -webkit-box-shadow: #ffe08f 0 1px 0 inset;
+  -o-box-shadow: #ffe08f 0 1px 0 inset;
+  box-shadow: #ffe08f 0 1px 0 inset;
+  border: 1px solid #f4b100;
+  color: #fff8e7;
+  text-shadow: #bc8900 0 -1px 0;
+}
+/* line 28, ../../../../../.rvm/gems/ruby-1.9.3-p125@zoobank/gems/sassy-buttons-0.0.9/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
+.uniForm .primaryAction.small:hover,
+.primaryAction.small:hover {
+  background-color: #f4b100;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffc428), color-stop(100%, #f4b100));
+  background: -webkit-linear-gradient(#ffc428, #f4b100);
+  background: -moz-linear-gradient(#ffc428, #f4b100);
+  background: -o-linear-gradient(#ffc428, #f4b100);
+  background: -ms-linear-gradient(#ffc428, #f4b100);
+  background: linear-gradient(#ffc428, #f4b100);
+}
+/* line 31, ../../../../../.rvm/gems/ruby-1.9.3-p125@zoobank/gems/sassy-buttons-0.0.9/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
+.uniForm .primaryAction.small:active,
+.primaryAction.small:active {
+  -moz-box-shadow: #e5a600 0 1px 2px inset;
+  -webkit-box-shadow: #e5a600 0 1px 2px inset;
+  -o-box-shadow: #e5a600 0 1px 2px inset;
+  box-shadow: #e5a600 0 1px 2px inset;
+}
+
+/* line 129, ../../sass/_uni-form-theme.scss */
+.uniForm .secondaryAction,
+.secondaryAction {
+  float: none;
+  background: transparent;
+  border: none;
+  color: #888888;
+  margin: 0 0 0 1em;
+  padding: 0;
+  text-decoration: underline;
+}
+
+/* Autocomplete shit */
+/* line 2, ../../sass/_autocomplete.scss */
+.ui-autocomplete.ui-menu {
+  position: absolute;
+  padding: 0;
+  list-style-type: none;
+  background-color: #fefefe;
+  border: 1px solid #aaa;
+}
+/* line 10, ../../sass/_autocomplete.scss */
+.ui-autocomplete.ui-menu .ui-menu-item a {
+  display: block;
+  padding: 0.25em 0.5em;
+}
+/* line 15, ../../sass/_autocomplete.scss */
+.ui-autocomplete.ui-menu .ui-menu-item .ui-state-hover {
+  background-color: #ffd566;
+}
+
+/* line 21, ../../sass/_autocomplete.scss */
+.textInput.ui-autocomplete-loading {
+  background-image: url(../images/autocomplete-loading.gif);
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+
+/* line 2, ../../sass/_tabs.scss */
+.ui-tabs {
+  position: relative;
+  zoom: 1;
+}
+
+/* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+/* line 3, ../../sass/_tabs.scss */
+.ui-tabs .ui-tabs-nav {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 4, ../../sass/_tabs.scss */
+.ui-tabs .ui-tabs-nav li {
+  list-style: none;
+  float: left;
+  position: relative;
+  top: 1px;
+  margin: 0 .2em 1px 0;
+  /*border-bottom: 0 !important;*/
+  padding: 0;
+  white-space: nowrap;
+}
+
+/* line 5, ../../sass/_tabs.scss */
+.ui-tabs .ui-tabs-nav li a {
+  float: left;
+  padding: .5em 1em;
+  text-decoration: none;
+}
+
+/* line 6, ../../sass/_tabs.scss */
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected {
+  margin-bottom: 0;
+  padding-bottom: 1px;
+}
+
+/* line 7, ../../sass/_tabs.scss */
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a {
+  cursor: text;
+}
+
+/* line 8, ../../sass/_tabs.scss */
+.ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a {
+  cursor: pointer;
+}
+
+/* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+/* line 9, ../../sass/_tabs.scss */
+.ui-tabs .ui-tabs-panel {
+  display: block;
+  border-width: 0;
+  padding: 0;
+  background: none;
+}
+
+/* line 10, ../../sass/_tabs.scss */
+.ui-tabs .ui-tabs-hide {
+  display: none !important;
+}
+
+/* line 16, ../../sass/_tabs.scss */
+.ui-tabs .ui-tabs-nav {
+  margin-bottom: -1px;
+}
+/* line 19, ../../sass/_tabs.scss */
+.ui-tabs .ui-tabs-nav li {
+  border: 1px solid #e1e1ff;
+  background-color: #e1e1ff;
+}
+/* line 23, ../../sass/_tabs.scss */
+.ui-tabs .ui-tabs-nav li a {
+  color: #1016ff;
+}
+/* line 25, ../../sass/_tabs.scss */
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected {
+  background: #f5f5ff;
+  border-bottom: 0;
+}
+/* line 29, ../../sass/_tabs.scss */
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a {
+  color: #31309c;
+}
+/* line 35, ../../sass/_tabs.scss */
+.ui-tabs .ui-tabs-nav li.ui-state-hover a {
+  color: #f4b100;
+}
+/* line 40, ../../sass/_tabs.scss */
+.ui-tabs .ui-tabs-panel {
+  border-top: 1px solid #e1e1ff;
+  background-color: #f5f5ff;
+}
+
+/* line 23, ../../sass/screen.scss */
+.check {
+  color: #6d990f;
+}
+
+/* line 25, ../../sass/screen.scss */
+body {
+  background-color: #f5f5ff;
+  color: #555555;
+}
+
+/* line 32, ../../sass/screen.scss */
+#header {
+  background-color: #31309c;
+  height: 47px;
+  margin-bottom: 14px;
+}
+
+/* line 38, ../../sass/screen.scss */
+.logo {
+  float: left;
+}
+/* line 40, ../../sass/screen.scss */
+.logo a {
+  color: #f5f5ff;
+  text-decoration: none;
+}
+
+/* line 42, ../../sass/screen.scss */
+nav {
+  padding-top: 30px;
+  float: right;
+}
+/* line 45, ../../sass/screen.scss */
+nav li {
+  display: inline;
+}
+/* line 47, ../../sass/screen.scss */
+nav li a {
+  padding-left: 1em;
+  color: #f5f5ff;
+  text-decoration: none;
+}
+/* line 52, ../../sass/screen.scss */
+nav li a:hover {
+  text-decoration: underline;
+  color: #ffcb42;
+}
+
+/* line 60, ../../sass/screen.scss */
+#footer {
+  margin-top: 3em;
+  text-align: center;
+}
+
+/* line 2, ../../../../../.rvm/gems/ruby-1.9.3-p125@zoobank/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/tables/_scaffolding.scss */
+table th {
+  text-align: center;
+  font-weight: bold;
+}
+/* line 6, ../../../../../.rvm/gems/ruby-1.9.3-p125@zoobank/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/tables/_scaffolding.scss */
+table td,
+table th {
+  padding: 2px;
+}
+/* line 8, ../../../../../.rvm/gems/ruby-1.9.3-p125@zoobank/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/tables/_scaffolding.scss */
+table td.numeric,
+table th.numeric {
+  text-align: right;
+}
+/* line 68, ../../sass/screen.scss */
+table th, table td {
+  vertical-align: top;
+  text-align: left;
+  font-weight: normal;
+}
+
+/* line 75, ../../sass/screen.scss */
+.introduction {
+  text-shadow: 0 1px 1px white;
+  margin: 2em 0;
+  text-align: center;
+}
+
+/* line 80, ../../sass/screen.scss */
+.tagline {
+  display: block;
+}
+
+/* line 85, ../../sass/screen.scss */
+.searchBar {
+  background-color: #ebebff;
+  border-top: 1px solid #e1e1ff;
+  border-bottom: 1px solid #e1e1ff;
+  padding: 1em 0;
+  margin-bottom: 1em;
+}
+/* line 92, ../../sass/screen.scss */
+.searchBar .container {
+  text-align: center;
+}
+/* line 96, ../../sass/screen.scss */
+.searchBar .search_input_field {
+  font-size: 14px;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+}
+
+/* line 104, ../../sass/screen.scss */
+.cta {
+  text-shadow: 0 -1px 1px rgba(132, 78, 0, 0.3);
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  -moz-border-radius-topleft: 0;
+  -webkit-border-top-left-radius: 0;
+  -o-border-top-left-radius: 0;
+  -ms-border-top-left-radius: 0;
+  -khtml-border-top-left-radius: 0;
+  border-top-left-radius: 0;
+  position: relative;
+  top: -3px;
+  background: #ffcb42 url(../images/yellow-corner.gif) bottom right no-repeat;
+  color: #fff8e7;
+  text-align: center;
+  padding: 0.25em 0;
+}
+/* line 115, ../../sass/screen.scss */
+.cta:before {
+  position: absolute;
+  top: 0px;
+  left: -3px;
+  width: 3px;
+  height: 3px;
+  font-size: 1px;
+  line-height: 1px;
+  content: url(../images/cta-loop.gif);
+}
+
+/* line 127, ../../sass/screen.scss */
+.ui-tabs ul {
+  overflow: hidden;
+  *zoom: 1;
+  float: none;
+  width: auto;
+}
+
+/* line 133, ../../sass/screen.scss */
+#registrationForm {
+  background-color: #ebebff;
+  border-top: 1px solid #e1e1ff;
+}
+
+/* line 137, ../../sass/screen.scss */
+#publicationTabs {
+  padding-top: 1em;
+  border-bottom: 1px solid #e1e1ff;
+}
+/* line 142, ../../sass/screen.scss */
+#publicationTabs .ui-tabs-nav {
+  margin-top: 1em;
+}
+/* line 146, ../../sass/screen.scss */
+#publicationTabs .ui-tabs-panel {
+  padding: 1em 0;
+}
+
+/* line 151, ../../sass/screen.scss */
+fieldset.buttons {
+  border-top: 1px solid #e1e1ff;
+}
+
+/* line 156, ../../sass/screen.scss */
+.citationList li {
+  margin-bottom: 18px !important;
+}
+
+/* line 161, ../../sass/screen.scss */
+legend {
+  display: none;
+}
+
+/* line 164, ../../sass/screen.scss */
+.actSummary {
+  margin-bottom: 2em;
+}
+/* line 167, ../../sass/screen.scss */
+.actSummary .biblio-entry {
+  display: block;
+  width: 60%;
+}
+
+/* line 173, ../../sass/screen.scss */
+.nextAction {
+  padding: 2em 0;
+  background-color: #ebebff;
+  border-top: 1px solid #e1e1ff;
+  border-bottom: 1px solid #e1e1ff;
+}
+
+/* line 180, ../../sass/screen.scss */
+.registerAnother {
+  color: #31309c;
+}
+/* line 183, ../../sass/screen.scss */
+.registerAnother a {
+  padding: 0.25em 0.5em;
+}
+
+/* line 188, ../../sass/screen.scss */
+.lsidWrapper {
+  overflow: hidden;
+  *zoom: 1;
+  margin-bottom: 1em;
+}
+/* line 192, ../../sass/screen.scss */
+.lsidWrapper .lsidLogo, .lsidWrapper .lsid {
+  display: inline;
+  float: left;
+  line-height: 18px;
+  padding: 2px 4px;
+}
+/* line 197, ../../sass/screen.scss */
+.lsidWrapper .lsidLogo {
+  -moz-border-radius-topleft: 3px;
+  -webkit-border-top-left-radius: 3px;
+  -o-border-top-left-radius: 3px;
+  -ms-border-top-left-radius: 3px;
+  -khtml-border-top-left-radius: 3px;
+  border-top-left-radius: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -o-border-bottom-left-radius: 3px;
+  -ms-border-bottom-left-radius: 3px;
+  -khtml-border-bottom-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  color: #fff;
+  background-color: #ff733d;
+  border: 1px solid #ff733d;
+}
+/* line 204, ../../sass/screen.scss */
+.lsidWrapper input.lsid {
+  width: 40em;
+  margin: 0;
+  border: 1px solid #e1e1ff;
+  border-left: 0;
+  background: white;
+  -webkit-appearance: none;
+  outline: none;
+}
+/* line 213, ../../sass/screen.scss */
+.lsidWrapper #clippy {
+  display: inline;
+  float: left;
+  margin-top: 4px;
+  margin-left: 4px;
+}
+
+/* line 220, ../../sass/screen.scss */
+.authorDisambiguation {
+  padding-top: 1em;
+  margin-top: 1em;
+  background-color: #ebebff;
+  border-top: 1px solid #e1e1ff;
+}
+/* line 227, ../../sass/screen.scss */
+.authorDisambiguation .specialties,
+.authorDisambiguation .sparkline {
+  padding-left: 3em;
+}
+/* line 231, ../../sass/screen.scss */
+.authorDisambiguation td.specialties {
+  color: #888888;
+}
+/* line 238, ../../sass/screen.scss */
+.authorDisambiguation thead th {
+  font-weight: bold;
+  padding-bottom: 1em;
+}
+
+/* line 244, ../../sass/screen.scss */
+ul.newAuthor {
+  width: 100% !important;
+}
+/* line 246, ../../sass/screen.scss */
+ul.newAuthor li {
+  width: auto !important;
+}
+/* line 249, ../../sass/screen.scss */
+ul.newAuthor .formHint {
+  width: 100%;
+}
+
+/* line 258, ../../sass/screen.scss */
+#nomenclaturalActs .inlineLabel input,
+#nomenclaturalActs .inlineLabels .inlineLabel input,
+#nomenclaturalActs .blockLabels .inlineLabel input,
+#nomenclaturalActs label input {
+  float: none;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* line 262, ../../sass/screen.scss */
+input.hasLSID {
+  background-image: url(../images/lsid-token.gif);
+  background-repeat: no-repeat;
+  background-position: center right;
+}
+
+/* Search results */
+/* line 271, ../../sass/screen.scss */
+.searchResults {
+  text-align: left;
+}
+/* line 274, ../../sass/screen.scss */
+.searchResults li:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+/* line 282, ../../sass/screen.scss */
+.searchResults .authorship {
+  color: #888888;
+}

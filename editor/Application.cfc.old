@@ -1,0 +1,34 @@
+<cfcomponent> 
+  <cfscript>
+    this.name = "zoobank";
+	this.sessionmanagement = true;
+	this.ApplicationTimeout = CreateTimeSpan( 0, 1, 20, 0 );
+	this.SessionTimeout = CreateTimeSpan( 0, 1, 20, 0 );
+    this.clientmanagement = true;
+	curdate = now();
+	site_root_folder = "";//cfset site_root_folder = ListLast(get_rules.system_path,"\")>
+	install_path = cgi.PATH_TRANSLATED;
+	install_path = Replace(install_path,ListLast(install_path,'\'),'');
+  </cfscript>
+	<!--- Define the page request properties. --->
+<cfsetting
+requesttimeout="20"
+showdebugoutput="true"
+enablecfoutputonly="false"
+/>
+	<cffunction name="onApplicationStart">
+		here
+	</cffunction>
+	<cffunction name="onRequestStart">
+		<cfif session.username is "">
+			<cflocation url="/" addtoken="No">
+			<cfabort>
+		</cfif>
+	</cffunction>
+	<cffunction name="OnRequest" access="public" returntype="void" output="true" hint="Fires after pre page processing is complete.">
+		<cfif session.username is "">
+			<cflocation url="/" addtoken="No">
+			<cfabort>
+		</cfif>
+	</cffunction>
+</cfcomponent>
