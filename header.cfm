@@ -32,12 +32,11 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>ZooBank.org</title>
-	<cfstylesheet src="#cssfiles#" minimize="true">	
-	<cfjavascript src="#jsFiles#" minimize="true" munge="true" output="head">	
-	
+	<cfstylesheet src="#cssfiles#" minimize="true">
+	<cfjavascript src="#jsFiles#" minimize="true" munge="true" output="head">
 </head>
 <body>
-<!--<cfjavascript src="#jsFilesBody#" minimize="true" munge="true" output="body">-->
+	<cfjavascript src="#jsFilesBody#" minimize="true" munge="true" output="body">
 	<header id="header">
 	<cfif (Find("editor",cgi.PATH_TRANSLATED) is 1) or (method is not "log_out" and method is not "TimedOut" and Find("zoobank\index.cfm",cgi.PATH_TRANSLATED) is 0 and Find("openbd\index.cfm",cgi.PATH_TRANSLATED) is 0)>
 	<span id="smll_iczn_logo" class="small_iczn_logo"><img src="/images/iczn-birds-small.png" alt="small ICZN logo" /></span></cfif>
