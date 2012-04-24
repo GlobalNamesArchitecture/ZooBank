@@ -1,5 +1,6 @@
-$().ready(function() {
-	$("#author_search_json_link").click(function () { 
-		$("#author_search_json").toggle();
-	});
+$(function() {
+  $(".api_expand_link").click(function(e) {
+    e.preventDefault();
+    $(this).parent().next().next().next().toggle();
+  });
 });

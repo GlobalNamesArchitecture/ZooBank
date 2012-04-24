@@ -1500,6 +1500,7 @@ table th, table td {
 /* line 190, ../../sass/screen.scss */
 .intro {
   background: url(../images/animal-tile.gif) repeat -30% 0;
+  border-bottom:10px solid #ebebff;
 }
 
 /* line 194, ../../sass/screen.scss */

@@ -29,7 +29,7 @@
  --->
 <!--- ----------------------------------------- --->
 <cfcomponent>
-	<cfset datasource = "gnub_taxonomer_sandbox"><!---taxonomer_sandbox--->
+	<cfset datasource = "taxonomer_sandbox"><!---taxonomer_sandbox--->
 	<cffunction name="find_author" returntype="string" access="remote" returnformat="plain">
 		<cfargument name="term" type="string" required="no" default="">
 		<cfargument name="FamilyName" type="string" required="no" default="">

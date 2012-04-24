@@ -9,10 +9,16 @@
 	CREATED:  
 	
 	ORIGINAL AUTHOR: Robert Whitton
+	
+	MODIFICATIONS BY: David P. Shorthouse
 
 	NOTES: Many of these functions are deprecated
 
 */
+
+$(function() {
+
+});
 
 $().ready(function() {
 	//add onclick event to the login link
@@ -106,11 +112,6 @@ function show_details(taxonid,pubid){
 	
 	document.getElementById("ref_details_layer").innerHTML = '<img src="/images/loading_blue.gif" />';
 	general_search(taxonid);
-	//get_pub_details(pubid);
-	//get_author_by_pub(pubid);
-	//get_pub_acts(pubid);
-	//setSectionClass('deemphasized_section','results_display_layer',0);
-	//setSectionClass('empahsized_section','ref_details_layer',0);
 }
 
 function get_taxon_details_response_action(results){
@@ -154,17 +155,6 @@ function get_author_by_pub_response_action(pubid,results){
 		}//end for
 	document.getElementById("ref_authors_layer").innerHTML = author_html;
 }
-
-/*
-function get_pub_acts_response_action(results){
-	var acts_html = '<div class="actSummary"><h2 class="actName">Taxon Name Usages<\/h2><ol>';
-	for(x=0;x<results.data.length;x++){
-			acts_html = acts_html + '<li><span class="clickable_layer" onclick="general_search('+results.data[x][3] +');">' +results.data[x][10] + '<\/span> ' + results.data[x][7] + ' ' + results.data[x][1] + '<\/li>';
-		}//end for
-	document.getElementById("ref_names_layer").innerHTML = acts_html + '<\/ol>';
-
-
-}*/
 
 function find_taxon_act_response_action(results,search_term){
 	//alert("Here");
@@ -253,7 +243,5 @@ function get_el_evidence_data_response_action(msg,term){
 	evidence_html = evidence_html + number_clips + " Video Clips<br \/>" + number_stills + " Still Images<br \/>" + visual_observations + ' Visual Observations';
 	if(exemplar_still_uuid!="") evidence_html = evidence_html +'<br \/><img src="http://www.explorers-log.com/'+exemplar_still_uuid+'" \/>';
 	document.getElementById("el_results_layer").innerHTML = evidence_html;
-	
-	
 }
 

@@ -5,18 +5,17 @@
 <cfset ArrayAppend( cssFiles, "/admin/css/zoobank.css" )>
 <cfset ArrayAppend( cssFiles, "/admin/css/dynamicCSS.css" )>
 <cfset ArrayAppend( cssFiles, "/admin/css/screen.css" )>
+<cfset ArrayAppend( cssFiles, "/admin/css/api_details.css" )>
 <cfset jsFiles = ArrayNew(1)>
-	<cfset ArrayAppend( jsFiles, "/admin/js/zoobank.js" )>
-	<cfset ArrayAppend( jsFiles, "/admin/js/jquery-1.6.2.min.js" )>
+	<cfset ArrayAppend( jsFiles, "/admin/js/jquery-1.7.2.min.js" )>
 	<cfset ArrayAppend( jsFiles, "/admin/js/jquery-ui-1.8.16.custom.min.js" )>
+	<cfset ArrayAppend( jsFiles, "/admin/js/zoobank.js" )>
 	<cfset ArrayAppend( jsFiles, "/admin/js/jquery.validate.min.js" )>
 	<cfset ArrayAppend( jsFiles, "/admin/js/json2.js" )>
 	<cfset ArrayAppend( jsFiles, "/admin/js/jquery.corner.js" )>
 	<cfset ArrayAppend( jsFiles, "/admin/js/autocompletes.js" )>
 	<cfset ArrayAppend( jsFiles, "/admin/js/waypoints.min.js" )>
 	<cfset ArrayAppend( jsFiles, "/admin/js/underscore-min.js" )>
-	<!--- <script src="http://documentcloud.github.com/underscore/underscore-min.js"
-type="text/javascript" charset="utf-8"></script>--->
 	<cfset jsFilesBody = ArrayNew(1)>
 	<cfset ArrayAppend( jsFilesBody, "/admin/js/wz_tooltip.js" )>
 	<cfset ArrayAppend( jsFilesBody, "/admin/js/tip_balloon.js" )>
@@ -33,13 +32,12 @@ type="text/javascript" charset="utf-8"></script>--->
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>ZooBank.org</title>
-	<!---<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>--->
 	<cfstylesheet src="#cssfiles#" minimize="true">	
 	<cfjavascript src="#jsFiles#" minimize="true" munge="true" output="head">	
 	
 </head>
 <body>
-	<cfjavascript src="#jsFilesBody#" minimize="true" munge="true" output="body">
+<!--<cfjavascript src="#jsFilesBody#" minimize="true" munge="true" output="body">-->
 	<header id="header">
 	<cfif (Find("editor",cgi.PATH_TRANSLATED) is 1) or (method is not "log_out" and method is not "TimedOut" and Find("zoobank\index.cfm",cgi.PATH_TRANSLATED) is 0 and Find("openbd\index.cfm",cgi.PATH_TRANSLATED) is 0)>
 	<span id="smll_iczn_logo" class="small_iczn_logo"><img src="/images/iczn-birds-small.png" alt="small ICZN logo" /></span></cfif>

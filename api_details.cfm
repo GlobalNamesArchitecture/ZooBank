@@ -9,8 +9,12 @@
 <h2>ZooBank API</h2>
 <h3>Authors</h3>
 
-<label>Search for an Author <a id="author_search_json_link">[json data]</a></label> <a href="/Authors.json?search_term=pyle" target="_blank">http://#cgi.server_name#/Authors.json?search_term=pyle</a><br />
-<div id="author_search_json" style="display:none;padding-left:35px;"><h3>JSON Results for Author Search</h3>
+<!--- DPS: suggest reworking this to be a definition list, dl with terms, dt and definitions, dd --->
+<!--- DPS: if use classes 'api_expand_link' and 'api_expand_container' throughout, associated js need not be changed --->
+
+<label>Search for an Author <a class="api_expand_link">[json data]</a></label>
+  <a href="/Authors.json?search_term=pyle" target="_blank">http://#cgi.server_name#/Authors.json?search_term=pyle</a><br />
+<div class="api_expand_container"><h3>JSON Results for Author Search</h3>
 	<table>
 		<thead>
 		<tr>

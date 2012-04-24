@@ -14,7 +14,11 @@
 	NOTES: Many of these functions are deprecated
 
 */
-var test_environment = 0;
+
+var ZOOBANK = {
+  'settings' : { 'env' : 0 }
+};
+
 function show_pubs(AuthorIDList, author_name,layer_name,show_select_button){
 	var show_select_button = 0;
 	document.getElementById(layer_name).innerHTML = '<span class="question_options_text">Recalling published works...</span><img src="/images/loading_blue.gif" />';

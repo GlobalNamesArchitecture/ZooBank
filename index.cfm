@@ -40,12 +40,6 @@ ZooBank provides a means to register new nomenclatural acts, published works, an
 	</div>
 </div>
 
-<div class="searchBar">
-	<div class="container">
-		<form action="/Search" method="get" id="form_home_page_search"><input type="text" class="search_input_field" id="search_term" name="search_term" lang="en" size="65">
-		<button type="button" id="btn_home_page_search" class="primaryAction small">Search</button><span id="search_error" class="search_error_msg"></span></form>
-	</div>
-</div>
 <cfoutput>
 <!---<cfdump var="#last_taxon_act_name#">--->
 <div id="results_display_layer" class="results_display_layer container"></div>
