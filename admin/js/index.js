@@ -18,50 +18,32 @@
 
 $(function() {
 
-});
+  $('#login_link').click(function(e){
+    e.preventDefault();
+    if($(this).hasClass('menu_open')) {
+      $(this).removeClass('menu_open');
+      $('#login_form_layer').hide();
+    } else {
+      $(this).addClass('menu_open');
+      $('#login_form_layer').show();
+    }
+  });
 
-$().ready(function() {
-	//add onclick event to the login link
-	$('#login_link').click(function(){
-		   if( $(this).hasClass('menu_open') ) {
-				   $(this).removeClass('menu_open');
-				   $('#login_form_layer').hide();
-		   } else {
-				   $(this).addClass('menu_open');
-				   $('#login_form_layer').show();
-		   }
+  $('#btn_cancel_login').click(function(e){
+    e.preventDefault();
+    $('#login_form_layer').hide();
+    $('#login_link').removeClass('menu_open');
+  });
 
-		   return false;
-   });
-   
-   //add onclick event to the cancel login link
-	$('#btn_cancel_login').click(function(){
-		   $('#login_form_layer').hide();
-		   $('#login_link').removeClass('menu_open');
-	});	
-	
-	//add onclick event to the cancel login link
-	$('#btn_home_page_search').click(function(){
-		  if($("#search_term").val()!="") {
-				document.getElementById("search_error").innerHTML = '<img src="/images/loading_16.gif" alt="working..." \/>';
-				document.getElementById("btn_home_page_search").innerHTML = 'working...';
-				document.getElementById("form_home_page_search").submit();
-			}
-		  else document.getElementById("search_error").innerHTML = "Please enter a search term";
-	});	
-	
-	
-	//
-	$('#btn_header_search').click(function(){
-		  if($("#search_term").val()!="") {
-				document.getElementById("search_error").innerHTML = '<img src="/images/loading_16.gif" alt="working..." \/>';
-				document.getElementById("btn_header_search").innerHTML = 'working...';
-				document.getElementById("form_general_search").submit();
-			}
-		  else document.getElementById("search_error").innerHTML = "Please enter a search term";
-	});	
-	
-	
+  $('#btn_header_search').click(function(e){
+    e.preventDefault();
+    if($("#search_term").val() !== "") {
+      $("#search_error").html('<img src="/images/loading_16.gif" alt="working..." \/>');
+      $("#btn_header_search").text('working...');
+      $("#form_general_search").submit();
+    }
+  });
+
 });
 
 

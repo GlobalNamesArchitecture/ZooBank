@@ -218,7 +218,7 @@ NOTES:  Calls service to get data on nomenclatural acts.  Renders a response in 
 							<img src="/images/BHLlogo.png" alt="BHL Logo" />
 						</a>
 						<!-- You want to se the line-height below to the height of the logo image above + 6px to get the text to line up nicely-->
-						<p style="line-height: 34px">Literature images courtesy of the <a href="http://biodiversitylibrary.org/name/#Replace(get_act_details.ScientificName," ","_","ALL")#" target="_blank">Biodiversity Heritage Library</a>.</p>
+						<p style="line-height: 34px">Literature images courtesy of the <a href="http://biodiversitylibrary.org/name/#Replace(REReplace(get_act_details.ScientificName,"<[^>]*(?:>|$)","","ALL"), " ", "_", "ALL")#" target="_blank">Biodiversity Heritage Library</a>.</p>
 					</div>
 					<div class="bhlPageImages">
 					<cfif start_pageID gt 0 and Len(bhl_page_struct.citations) is 1>
@@ -253,7 +253,7 @@ NOTES:  Calls service to get data on nomenclatural acts.  Renders a response in 
 							<img src="/images/gni-logo.png" alt="GNI Logo" />
 						</a>
 						<!-- You want to se the line-height below to the height of the logo image above + 6px to get the text to line up nicely-->
-						<p style="line-height: 42px">Additional names information provided courtesy of the <a href="http://gni.globalnames.org/name_strings?search_term=#Replace(get_act_details.ScientificName," ","+","ALL")#&amp;commit=Search" target="_blank">Global Names Index</a>.</p>
+						<p style="line-height: 42px">Additional names information provided courtesy of the <a href="http://gni.globalnames.org/name_strings?search_term=#Replace(REReplace(get_act_details.ScientificName,"<[^>]*(?:>|$)","","ALL"), " ", "+", "ALL")#&amp;commit=Search" target="_blank">Global Names Index</a>.</p>
 					</div>
 					<ol>
 						<cfloop from="1" to="#Len(gni_results.name_strings)#" step="1" index="i">
