@@ -34,6 +34,7 @@ $(function() {
       no_match    = "no match";
 
   $.each(key_value, function(k,v) {
+    v= null;
     keys.push(k);
   });
 
@@ -43,8 +44,8 @@ $(function() {
     $('#'+self+'_search_string').autocomplete({
       minLength : (self === 'pub') ? 4 : 3,
       delay     : 400,
-      search    : function(event, ui) { $(this).addClass("wait"); },
-      open      : function(event, ui) { $(this).removeClass("wait"); },
+      search    : function() { $(this).addClass("wait"); },
+      open      : function() { $(this).removeClass("wait"); },
       source    : function(request, response) {
         data = {
           term                : request.term,
@@ -67,6 +68,7 @@ $(function() {
         });
       },
       select    : function(event, ui) {
+        event = null;
         if(ZOOBANK.settings.env === 0) {
           switch(self) {
             case 'author':
