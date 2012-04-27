@@ -4,7 +4,7 @@
 
 	PURPOSE:  Functionality associated with jQuery autocompletes.
 
-	LAST MODIFIED: 4/20/2012 - added top parameter to reference searches
+	LAST MODIFIED: 4/24/2012 - made code more DRY and lean
 		
 	CREATED:  
 	
@@ -21,7 +21,7 @@
 $(function() {
   "use strict";
 
-  var ZOOBANK   = ZOOBANK || { 'settings' : { 'env' : 1 } },
+  var ZOOBANK   = ZOOBANK || { 'config' : { 'env' : 1 } },
       keys      = [],
       key_value = {
         'author'  : { url : 'Authors.json', fxn : 'author' },
@@ -31,7 +31,7 @@ $(function() {
         'rank'    : { url : 'services.cfc?method=find_taxon_level', fxn : 'rank' },
         'parent'  : { url : 'NomenclaturalActs.json', fxn : 'protonym' }
       },
-      no_match    = "no match";
+      no_match  = "no match";
 
   $.each(key_value, function(k,v) {
     v= null;
@@ -69,7 +69,7 @@ $(function() {
       },
       select    : function(event, ui) {
         event = null;
-        if(ZOOBANK.settings.env === 0) {
+        if(ZOOBANK.config.env === 0) {
           switch(self) {
             case 'author':
               $('#author_id').val(no_match);

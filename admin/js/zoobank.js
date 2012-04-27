@@ -10,14 +10,93 @@
 	CREATED:  
 	
 	ORIGINAL AUTHOR: Robert Whitton
+	
+	MODIFIED BY: David P. Shorthouse
 
 	NOTES: Many of these functions are deprecated
 
 */
 
-var ZOOBANK = {
-  'settings' : { 'env' : 0 }
-};
+$(function() {
+
+  var ZOOBANK = ZOOBANK || (function() {
+
+    _public = function(url) {
+      function _ajax(executor, url, vars) {
+        $.extend(executor, { url : url, data : vars} );
+        $.ajax(executor);
+      }
+      return {
+        index : function(vars, sendResponse) {
+          if(!vars || typeof vars === 'string') { vars = {}; }
+          if(typeof vars === 'function') { sendResponse = vars; }
+          _ajax(ZOOBANK.utils.ajax(sendResponse), url, vars);
+        },
+        create : function(vars, sendResponse) {
+          if(!vars) { return; }
+          _ajax(ZOOBANK.utils.ajax(sendResponse, "POST"), url, vars);
+        },
+        destroy : function(vars, sendResponse) {
+          if(!vars) { return; }
+          _ajax(ZOOBANK.utils.ajax(sendResponse, "DELETE"), url, vars);
+        }
+      };
+    };
+
+    return {
+
+      //Public configuration
+      config : { environment : 0 },
+
+      //Publications model
+      Publications : (function() {
+        return _public("/References.json");
+      }()),
+
+      //Authors model
+      Authors : (function() {
+        return _public("/Authors.json");
+      }()),
+
+      //Nomenclatural Acts model
+      NomenclaturalActs : (function() {
+        return _public("/NomenclaturalActs.json");
+      }()),
+
+      //General utility methods
+      utils : (function() {
+        return {
+          ajax : function(callback, type) {
+            return {
+              type    : (type || "GET"),
+              url     : "",
+              data    : {},
+              success : function(response) {
+                if(typeof callback === 'function') {
+                  callback(response);
+                }
+              },
+              error : function(xhr, textStatus, error) {
+                if(typeof callback === 'function') {
+                  callback(textStatus);
+                }
+              }
+            };
+          }
+        };
+      }())
+    };
+  }());
+
+/*
+Example usage
+
+ZOOBANK.Publications.index({Year:1941}, function(response) {
+  console.log(response[0]);
+});
+*/
+
+});
 
 function show_pubs(AuthorIDList, author_name,layer_name,show_select_button){
 	var show_select_button = 0;
@@ -56,7 +135,7 @@ function show_pubs(AuthorIDList, author_name,layer_name,show_select_button){
 		else document.getElementById(layer_name).innerHTML = '';
 		}
 	}
-).responseText;			
+).responseText;
 	
 }//end function show_pubs
 
