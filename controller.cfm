@@ -51,7 +51,7 @@
 	</cfif>
 	
 	
-	<cfif method is "References">
+	<cfif method is "references">
 		<cfheader
 		statuscode="200"
 		statustext="ok"
@@ -73,43 +73,43 @@
 		<cfabort>
 	</cfif>
 	
-	<cfif method is "NomenclaturalActs">
+	<cfif method is "nomenclatural_acts">
 		<cfheader
 		statuscode="200"
 		statustext="ok"
 		/>
-		<cfinclude template="/nomenclaturalacts.cfm">
+		<cfinclude template="/nomenclatural_acts.cfm">
 		<cfabort>
 	</cfif>
 	
-	<cfif method is "Names">
+	<cfif method is "taxa">
 		<cfheader
 		statuscode="200"
 		statustext="ok"
 		/>
-		<cfinclude template="/names.cfm">
+		<cfinclude template="/taxa.cfm">
 		<cfabort>
 	</cfif>
 	
-	<cfif method is "Identifiers">
+	<cfif method is "identifiers">
 		<cfheader
 		statuscode="200"
 		statustext="ok"
 		/>
-		<cfinclude template="/get_identifiers.cfm">
+		<cfinclude template="/identifiers.cfm">
 		<cfabort>
 	</cfif>
 	
-	<cfif method is "Repositories">
+	<cfif method is "repositories">
 		<cfheader
 		statuscode="200"
 		statustext="ok"
 		/>
-		<cfinclude template="/get_repositories.cfm">
+		<cfinclude template="/repositories.cfm">
 		<cfabort>
 	</cfif>
 	
-	<cfif method is "Authors">
+	<cfif method is "authors">
 		<cfheader
 		statuscode="200"
 		statustext="ok"
@@ -118,7 +118,7 @@
 		<cfabort>
 	</cfif>
 	
-	<cfif method is "Agents">		
+	<cfif method is "agents">		
 		<cfheader
 		statuscode="200"
 		statustext="ok"
@@ -146,7 +146,7 @@
 		statuscode="200"
 		statustext="ok"
 		/>
-		<cfinclude template="/api_details.cfm">
+		<cfinclude template="/api.cfm">
 		<cfabort>
 	</cfif>
 	
@@ -168,7 +168,7 @@
 		<cfabort>
 	</cfif>
 	
-	<cfif method is "Register">
+	<cfif method is "register">
 		
 		<cfif not IsDefined("session.username")>
 			<cfinclude template="index.cfm">

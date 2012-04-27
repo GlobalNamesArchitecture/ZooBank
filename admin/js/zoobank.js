@@ -17,9 +17,13 @@
 
 */
 
+var ZOOBANK = ZOOBANK || {};
+
 $(function() {
 
-  var ZOOBANK = ZOOBANK || (function() {
+  "use strict";
+
+  ZOOBANK = (function() {
 
     _public = function(url) {
       function _ajax(executor, url, vars) {
@@ -46,21 +50,34 @@ $(function() {
     return {
 
       //Public configuration
-      config : { environment : 0 },
+      config : { environment : 1 },
 
       //Publications model
       Publications : (function() {
-        return _public("/References.json");
+        return _public("/references.json");
       }()),
 
       //Authors model
       Authors : (function() {
-        return _public("/Authors.json");
+        return _public("/authors.json");
+      }()),
+
+      //Taxa model
+      Taxa : (function() {
+        return _public("/taxa.json");
       }()),
 
       //Nomenclatural Acts model
       NomenclaturalActs : (function() {
-        return _public("/NomenclaturalActs.json");
+        return _public("/nomenclatural_acts.json");
+      }()),
+
+      Language : (function() {
+        return _public("/languages.json");
+      }()),
+
+      Rank : (function() {
+        return _public("/ranks.json");
       }()),
 
       //General utility methods
@@ -68,15 +85,17 @@ $(function() {
         return {
           ajax : function(callback, type) {
             return {
-              type    : (type || "GET"),
-              url     : "",
-              data    : {},
-              success : function(response) {
+              type        : (type || "GET"),
+              url         : "",
+              data        : {},
+              dataType    : "json",
+              contentType : 'application/json; charset=utf-8',
+              success     : function(response) {
                 if(typeof callback === 'function') {
                   callback(response);
                 }
               },
-              error : function(xhr, textStatus, error) {
+              error       : function(xhr, textStatus, error) {
                 if(typeof callback === 'function') {
                   callback(textStatus);
                 }

@@ -21,15 +21,14 @@
 $(function() {
   "use strict";
 
-  var ZOOBANK   = ZOOBANK || { 'config' : { 'env' : 1 } },
-      keys      = [],
+  var keys      = [],
       key_value = {
-        'author'  : { url : 'Authors.json', fxn : 'author' },
-        'pub'     : { url : 'References.json', fxn : 'journal' },
-        'article' : { url : 'References.json', fxn : 'article' },
-        'language': { url : 'services.cfc?method=find_language', fxn : 'language' },
-        'rank'    : { url : 'services.cfc?method=find_taxon_level', fxn : 'rank' },
-        'parent'  : { url : 'NomenclaturalActs.json', fxn : 'protonym' }
+        'author'  : { url : 'authors.json', fxn : 'author' },
+        'pub'     : { url : 'references.json', fxn : 'journal' },
+        'article' : { url : 'references.json', fxn : 'article' },
+        'language': { url : 'languages.json', fxn : 'language' },
+        'rank'    : { url : 'ranks.json', fxn : 'rank' },
+        'parent'  : { url : 'nomenclatural_acts.json', fxn : 'protonym' }
       },
       no_match  = "no match";
 
@@ -69,7 +68,7 @@ $(function() {
       },
       select    : function(event, ui) {
         event = null;
-        if(ZOOBANK.config.env === 0) {
+        if(ZOOBANK.config.environment === 0) {
           switch(self) {
             case 'author':
               $('#author_id').val(no_match);

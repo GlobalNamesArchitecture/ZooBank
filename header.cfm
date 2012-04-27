@@ -46,13 +46,13 @@
 			<ul>
 				<cfif isdefined("session.username")>
 					<cfif session.username is not "">
-						<cfoutput><li>Logged in as <a href="/Editor">#session.username#</a></li></cfoutput>
-						<li><a href="/Register">register</a></li>
+						<cfoutput><li>Logged in as <a href="/editor">#session.username#</a></li></cfoutput>
+						<li><a href="/register">register</a></li>
 					</cfif>
 				</cfif>
-				<li><a href="/About">about</a></li>
-				<li><a href="/Contact">contact</a></li>
-				<li><a href="/Api">api</a></li>
+				<li><a href="/about">about</a></li>
+				<li><a href="/contact">contact</a></li>
+				<li><a href="/api">api</a></li>
 				<li class="login_container">
 					<cfset loggedIn = 0>
 					<cfif isdefined("session.username")>
