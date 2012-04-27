@@ -1,11 +1,33 @@
+<!--- ----------------------------------------- --->
+<!--- 
+	NAME: authors.cfm
 
+	PURPOSE:  Returns data on authors in HTML and JSON format.  Calls to gnub_services [get_author] for the data.
 
+	LAST MODIFIED: 4/23/2012 - updated search fidelity when term is splitting names on a comma.
+	
+	CREATED:  3/22/2011 - created
+	
+	AUTHOR: Robert Whitton
+
+	NOTES:  
+		
+			
+ --->
+<!--- ----------------------------------------- --->
+<!---<cfoutput>
+has comma: #Find(",",term)#
+Family: #Trim(ListFirst(term,","))#
+Given:#Trim(ListLast(term,","))#
+</cfoutput><cfabort>--->
 <cfobject component="gnub_services" name="service">
 <cfinvoke component="#service#" method="get_author" returnvariable="author_results">
 	<cfif isdefined("term")>
 		<cfif Find(",",term)>
 			<cfinvokeargument name="Family_Name" value="#Trim(ListFirst(term,","))#">
-			<cfinvokeargument name="Given_Name" value="#Trim(ListLast(term,","))#">
+			<cfif Trim(ListLast(term,",")) is not "" && Right(term,1) != ",">
+				<cfinvokeargument name="Given_Name" value="#Trim(ListLast(term,","))#">
+			</cfif>
 		<cfelseif find(" ",term)>
 			<cfinvokeargument name="Family_Name" value="#Trim(ListLast(term," "))#">
 			<cfinvokeargument name="Given_Name" value="#Trim(ListFirst(term," "))#">
@@ -49,7 +71,6 @@
 </cfif>--->
 
 
-
 <cfheader statuscode="200" statustext="ok" />
 
 <cfif format is "html">
@@ -89,7 +110,8 @@
 						<cfset isRegistered = 1>
 						<div class="lsidWrapper">
 							<span class="lsidLogo">LSID</span>
-							<input type="text" class="selectAll lsid" value="#get_ids.identifier#">
+							<span class="lsid" style="background-color:white;line-height:18px;vertical-align:top;">#get_ids.identifier#</span>
+							<!---<input type="text" class="selectAll lsid" value="#get_ids.identifier#" disabled="true" />--->
 							<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
 							width="110" height="14" id="clippy" type="application/x-shockwave-flash">
 							<param name="movie" value="/public/flash/clippy.swf">
@@ -213,6 +235,10 @@
 		<cfset new_family_name = search_term>
 		<cfset new_given_name = "">	
 	</cfif>
+	
+	
+	
+	
 	<cftry>
 		<cfset new_family_name = "#UCase(Left(Trim(new_family_name),1))##LCase(RemoveChars(Trim(new_family_name),1,1))#">
 		<cfcatch></cfcatch>
@@ -221,6 +247,42 @@
 		<cfset new_given_name = "#UCase(Left(Trim(new_given_name),1))##LCase(RemoveChars(Trim(new_given_name),1,1))#">
 		<cfcatch></cfcatch>
 	</cftry>
+	
+	<!--- Make sure any characters after an apostrophe are uppercase--->
+	<cfset new_family_name = Replace(new_family_name,CharAt(new_family_name,find("'",new_family_name)+1),UCASE(CharAt(new_family_name,find("'",new_family_name)+1)),"ONE")>
+	<!--- Make sure any characters after a hyphen are uppercase--->
+	<cfset new_family_name = Replace(new_family_name,CharAt(new_family_name,find("-",new_family_name)+1),UCASE(CharAt(new_family_name,find("-",new_family_name)+1)),"ONE")>
+	<!--- Make sure any characters after a space are uppercase--->
+	<cfset new_family_name = Replace(new_family_name,CharAt(new_family_name,find(" ",new_family_name)+1),UCASE(CharAt(new_family_name,find(" ",new_family_name)+1)),"ALL")>
+		
+	<cfif Find(" ",new_given_name)>
+		<cfset updated_given_name = "">
+		<cfloop list="#new_given_name#" delimiters=" " index="temp_name_part">
+			<cfset name_part = Replace(temp_name_part,Charat(temp_name_part,1),UCASE(Charat(temp_name_part,1)),"ONE")>
+			<cfset updated_given_name = ListAppend(updated_given_name,name_part," ")>
+		</cfloop>
+		<cfset new_given_name = updated_given_name>
+	</cfif>
+			
+	<!---All periods should be followed by a space--->
+	<cfif Find(".",new_given_name)>
+		<cfif CharAt(new_given_name,Find(".",new_given_name)+1) != " ">
+			<cfset new_given_name = Replace(new_given_name,".",". ","ALL")>
+		</cfif>
+	</cfif>
+		
+	<cfloop from="1" to="4" step="1" index="count">
+		<cfif Find(" ",new_given_name)>
+		<cfset new_given_name = Replace(new_given_name,CharAt(new_given_name,find(" ",new_given_name)+1),UCASE(CharAt(new_given_name,find(" ",new_given_name)+1)),"ONE")>
+		</cfif>
+	</cfloop>
+	<!---make sure any initials are capitalized--->
+	<cfloop from="1" to="4" step="1" index="count">
+		<cfif Find(".",new_given_name)>
+			<cfset new_given_name = Replace(new_given_name,CharAt(new_given_name,find(".",new_given_name)-1),UCASE(CharAt(new_given_name,find(".",new_given_name)-1)),"ONE")>
+		</cfif>
+	</cfloop>
+	
 	<cfset new_author_uuid = CreateUUID()>
 	
 	<!---NEED TO RETURN THIS SECTION ONLY FOR INTERNAL AUTOCOMPLETES!!!--->

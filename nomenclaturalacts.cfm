@@ -81,7 +81,10 @@ NOTES:  Calls service to get data on nomenclatural acts.  Renders a response in 
 					<cfoutput query="get_ids">
 					<cfif get_ids.IdentifierClass is "LSID">
 						<div class="lsidWrapper">
-							<span class="lsidLogo">LSID</span><input type="text" value="#get_ids.identifier#" class="selectAll lsid"><object width="110" height="14" id="clippy" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000">
+							<span class="lsidLogo">LSID</span>
+							<span class="lsid" style="background-color:white;line-height:18px;vertical-align:top;">#get_ids.identifier#</span>
+							<!---<input type="text" disabled="true" value="#get_ids.identifier#" class="selectAll lsid">--->
+							<object width="110" height="14" id="clippy" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000">
 								<param value="/public/flash/clippy.swf" name="movie">
 								<param value="always" name="allowScriptAccess">
 								<param value="high" name="quality">
@@ -131,16 +134,20 @@ NOTES:  Calls service to get data on nomenclatural acts.  Renders a response in 
 								<cfinvokeargument name="UUID" value="#get_act_details.OriginalParentUsageUUID#">
 							</cfinvoke>
 							
-							<cfinvoke component="#service#" method="get_reference" returnvariable="get_orig_parent_ref_details">
-								<cfinvokeargument name="ReferenceUUID" value="#get_orig_parent_details.ReferenceUUID#">
-							</cfinvoke>
+							
 							<!---<cfdump var="#get_orig_parent_details.ReferenceUUID#"><cfabort>--->
 							<td>
-								<em>#get_act_details.ParentName#</em> [<a href="/NomenclaturalActs/#get_orig_parent_details.UUID#">#get_orig_parent_details.ScientificName#</a> 
-								<!---<cfdump var="#get_orig_parent_ref_details#"><cfabort>--->
-								<a href="/References/<cfif get_orig_parent_ref_details.ReferenceType is "Sub-Reference">#get_orig_parent_ref_details.ParentReferenceUUID#<cfelse>#get_orig_parent_ref_details.UUID#</cfif>">
-								#get_orig_parent_details.UsageAuthors# #get_orig_parent_ref_details.year#</a>]
-							
+								<cfif get_orig_parent_details.ReferenceID is 0>
+									Placeholder
+								<cfelse>
+									<cfinvoke component="#service#" method="get_reference" returnvariable="get_orig_parent_ref_details">
+										<cfinvokeargument name="UUID" value="#get_orig_parent_details.ReferenceUUID#">
+									</cfinvoke>
+									<em>#get_act_details.ParentName#</em> [<a href="/NomenclaturalActs/#get_orig_parent_details.UUID#">#get_orig_parent_details.ScientificName#</a> 
+									<!---<cfdump var="#get_orig_parent_ref_details#"><cfabort>--->
+									<a href="/References/<cfif get_orig_parent_ref_details.ReferenceType is "Sub-Reference">#get_orig_parent_ref_details.ParentReferenceUUID#<cfelse>#get_orig_parent_ref_details.UUID#</cfif>">
+									#get_orig_parent_details.UsageAuthors# #get_orig_parent_ref_details.year#</a>]
+								</cfif>
 							</td>
 						</tr>
 						</cfif>
@@ -148,13 +155,18 @@ NOTES:  Calls service to get data on nomenclatural acts.  Renders a response in 
 							<th scope="row">
 								Publication
 							</th>
-							<!--- Get the reference information --->
-							<cfinvoke component="#service#" method="get_reference" returnvariable="reference_results">
-								<cfinvokeargument name="ReferenceUUID" value="#get_act_details.ReferenceUUID#">
-							</cfinvoke>
-							<td><!---#get_act_details.ReferenceUUID# <cfdump var="#reference_results#"> <cfabort>--->
-								<span class="biblio-entry"><span class="biblio-authors"><a href="/References/#reference_results.UUID#">#reference_results.Authors# #reference_results.Year#</a> </span><span class="biblio-title">#reference_results.FullTitle#</span> #reference_results.CitationDetails#&nbsp;<a href="/References/#reference_results.UUID#">[show all names in ref.]</a></span>
-							</td>
+							<cfif get_act_details.ReferenceID is not 0>
+								<!--- Get the reference information --->
+								<cfinvoke component="#service#" method="get_reference" returnvariable="reference_results">
+									<cfinvokeargument name="UUID" value="#get_act_details.ReferenceUUID#">
+								</cfinvoke>
+								<td><!---#get_act_details.ReferenceUUID# <cfdump var="#reference_results#"> <cfabort>--->
+									<span class="biblio-entry"><span class="biblio-authors">
+									<a href="/References/#reference_results.UUID#">#reference_results.Authors# #reference_results.Year#</a> </span><span class="biblio-title">#reference_results.FullTitle#</span> #reference_results.CitationDetails#&nbsp;<a href="/References/#reference_results.UUID#">[show all names in ref.]</a></span>
+								</td>
+							<cfelse>
+								<td>Placeholder Entry - no reference set</td>
+							</cfif>
 						</tr>
 					</tbody>
 				</table>
@@ -167,7 +179,7 @@ NOTES:  Calls service to get data on nomenclatural acts.  Renders a response in 
 		</cfinvoke>
 		--->
 		
-		
+	<cfif get_act_details.ReferenceID is not 0>
 		<cfset Start_Page = "">
 		<cfset End_Page = "">
 		<cfif get_act_details.StartPage is not "">
@@ -239,7 +251,7 @@ NOTES:  Calls service to get data on nomenclatural acts.  Renders a response in 
 			</div>
 			
 		</div><!--- end bhl_results --->
-		
+	</cfif>	
 		<!---<cfdump var="#get_act_details#">--->
 		<cfinvoke component="services" method="get_gni" returnvariable="gni_results">
 			<cfinvokeargument name="search_term" value="#get_act_details.ParentName# #get_act_details.NameString#">
@@ -333,7 +345,7 @@ NOTES:  Calls service to get data on nomenclatural acts.  Renders a response in 
 	<cfinclude template="/footer.cfm">
 	<cfabort>
 <cfelseif format is "json">
-	<cfif get_act_details.recordcount is 0>
+	<cfif get_act_details.recordcount is 0 and not IsDefined("add_new_parent_option")>
 		 <cfheader
 		statuscode="404"
 		statustext="Not Found"

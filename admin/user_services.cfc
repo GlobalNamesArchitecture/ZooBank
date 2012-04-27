@@ -17,4 +17,18 @@
 		</cfif>
 		<cfreturn isValidUser />
 	</cffunction>
+	
+	<cffunction name="get_user">
+		<cfargument name="username" type="string" required="yes">
+	
+		<cfquery name="get_users" datasource="#datasource#">
+			EXEC sp_GetUserDetails
+			@UserName = <cfqueryparam cfsqltype="cf_sql_varchar" value="#Arguments.username#">
+		</cfquery>
+		
+		<cfreturn get_users />
+	</cffunction>
+	
+	
+	
 </cfcomponent>

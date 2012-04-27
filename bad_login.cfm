@@ -5,6 +5,7 @@
 	Enter your registered email address below and we will send your username to that address.<br /><br />
 	Registered Email Address <input type="text" size="80" name="registered_email" id="registered_email" /><br /><br />
 	<button type="button" id="btn_forgot_pwd" class="primaryAction">Send me my username</button>
+	<span style="font-weight:bolder;">[NOTE THIS FEATURE IS NOT YET ENABLED]</span>
 	</p>
 	<cfset session.IsAuthenticated = false>
 	<cfset session.username = "">

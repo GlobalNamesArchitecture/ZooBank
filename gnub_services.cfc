@@ -180,7 +180,7 @@
 		<cfargument name="ReferenceID" type="string" required="no">
 		<cfargument name="AuthorIDList" type="string" required="no">
 		<cfargument name="AuthorUUIDList" type="string" required="no">
-		<cfargument name="ReferenceUUID" type="string" required="no">
+		<cfargument name="UUID" type="string" required="no">
 		<cfargument name="StartYear" type="string" required="no">
 		<cfargument name="EndYear" type="string" required="no">
 		<cfargument name="PKID" type="string" required="no">
@@ -199,7 +199,7 @@
 			<cfif Arguments.ReferenceID gt 0>,@ReferenceID = #Arguments.ReferenceID#</cfif>	
 			<cfif Arguments.AuthorIDList gt 0>,@AuthorIDList = #Arguments.AuthorIDList#</cfif>	
 			<cfif Arguments.AuthorUUIDList gt 0>,@AuthorUUIDList = '#Arguments.AuthorUUIDList#'</cfif>	
-			<cfif Arguments.ReferenceUUID gt 0>,@UUID = '#Arguments.ReferenceUUID#'</cfif>	
+			<cfif Arguments.UUID gt 0>,@UUID = '#Arguments.UUID#'</cfif>	
 			<cfif Arguments.StartYear gt 0>,@StartYear = '#Arguments.StartYear#'</cfif>	
 			<cfif Arguments.EndYear gt 0>,@EndYear = '#Arguments.EndYear#'</cfif>	
 			<cfif Arguments.PKID gt 0>,@PKID = '#Arguments.PKID#'</cfif>
@@ -212,7 +212,7 @@
 
 		
 		<cfif not IsDefined("get_pubs")>
-			<cfset get_pubs = QueryNew('FullTitle')>
+			<cfset get_pubs = QueryNew('No_Records_Found')>
 		</cfif>
 		<cfreturn get_pubs />	
 	</cffunction>
@@ -316,5 +316,21 @@
 	
 		<cfreturn getRepositories />
 	</cffunction>
+	
+	<cffunction name="get_zoobank_lsid">
+		<cfargument name="UUID" type="string" required="no">
+		<cfargument name="LSID" type="string" required="no">
+		<cfquery name="getLSID" datasource="#datasource#">
+			EXEC sp_GetZooBankLSID
+			<cfif Arguments.UUID is not "">@UUID = <cfqueryparam cfsqltype="cf_sql_varchar" value="#Arguments.UUID#"></cfif>
+			<cfif Arguments.LSID is not "">@LSID = <cfqueryparam cfsqltype="cf_sql_varchar" value="#Arguments.LSID#"></cfif>
+		</cfquery>
+		<cfif not IsDefined("getLSID")>
+			<cfset getLSID = QueryNew('No_Records_Found')>
+		</cfif>
+		<cfreturn getLSID />
+	</cffunction>
+	
+	
 	
 </cfcomponent>

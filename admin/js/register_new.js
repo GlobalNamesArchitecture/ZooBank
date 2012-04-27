@@ -409,6 +409,8 @@ $().ready(function() {
 				Pages : $("#pub_pages").val(),
 				Figures : $("#pub_figures").val(),
 				DatePublished : publication_date,
+				Publisher : $("#pub_publisher").val(),
+				PlacePublished : $("#pub_place_published").val(),
 				Authors: selected_authors_array.toString(),
 				LogUserName: LogUserName,
 				selected_authors_name_list: select_authors_name_list,
@@ -548,6 +550,8 @@ $().ready(function() {
 				Pages : '',
 				Figures : '',
 				DatePublished : '',
+				Publisher : $("#new_bookseries_publisher").val(),
+				PlacePublished : $("#new_bookseries_place_published").val(),
 				Authors: '',
 				LogUserName: LogUserName,
 				selected_authors_name_list: '',
@@ -979,8 +983,12 @@ function journal_lookup_autocomplete_action(ui){
 
 function language_lookup_autocomplete_action(ui){
 
-	document.getElementById("LanguageID").value=ui.item.id;
-	var result_content = ui.item.value;
+	if(ui.item.id>0) document.getElementById("LanguageID").value=ui.item.id;
+	else {
+		document.getElementById("LanguageID").value="";
+		document.getElementById("language_search_string").value="";
+		}
+	//var result_content = ui.item.value;
 	//document.getElementById("selected_language").innerHTML = result_content;
 	//hide the search field
 	//$("#pub_language_input_field").hide();
@@ -1011,7 +1019,7 @@ function protonym_lookup_autocomplete_action(ui) {
 }
 
 function get_pub_acts_response_action(results,include_radio_btns,layer_name,RankGroup){
-	alert("here");
+	//alert("here");
 	var acts_html;
 	var num_lsid = 1;//number of records that have LSIDs
 	if(include_radio_btns>0) {

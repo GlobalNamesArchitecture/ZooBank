@@ -40,7 +40,9 @@
 			<cfinvokeargument name="EndYear" value="#EndYear#">
 			<cfif IsDefined("ParentReferenceUUID")>
 				<cfif Trim(ParentReferenceUUID) is not "">
-					<cfinvokeargument name="ParentReferenceUUID" value="#ParentReferenceUUID#">
+					<cfif ParentReferenceUUID is not "undefined">
+						<cfinvokeargument name="ParentReferenceUUID" value="#ParentReferenceUUID#">
+					</cfif>
 				</cfif>
 			</cfif>
 			<cfif Trim(reference_title) is not "">
@@ -52,7 +54,7 @@
 			<cfinvokeargument name="IsPeriodical" value="#IsPeriodical#">
 			<cfinvokeargument name="search_term" value="#search_term#">	
 		<cfelseif Len(search_term) is 36 or Len(search_term) is 33>
-			<cfinvokeargument name="ReferenceUUID" value="#search_term#">
+			<cfinvokeargument name="UUID" value="#search_term#">
 		<cfelse>
 			<cfinvokeargument name="search_term" value="#search_term#">
 		</cfif>
@@ -99,7 +101,8 @@
 				<cfoutput query="get_ids">
 					<cfif get_ids.IdentifierClass is "LSID">
 						<div class="lsidWrapper">
-							<span class="lsidLogo">LSID</span><input type="text" value="#get_ids.identifier#" class="selectAll lsid">
+							<span class="lsidLogo">LSID</span><span class="lsid" style="background-color:white;line-height:18px;vertical-align:top;">#get_ids.identifier#</span>
+							<!---<input type="text" value="#get_ids.identifier#" class="selectAll lsid" disabled="true" />--->
 							<object width="110" height="14" id="clippy" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" type="application/x-shockwave-flash">
 								<param value="/public/flash/clippy.swf" name="movie">
 								<param value="always" name="allowScriptAccess">
@@ -173,7 +176,28 @@
 							<span class="biblio-entry"><span class="biblio-title">
 							<a href="/References/#parent_reference_results.UUID#">#parent_reference_results.FullTitle#</a></span></span>
 						</td>
-					</tr>					
+					</tr>		
+					<tr>
+						<th scope="row">Publisher</th>
+						<td>
+							<span class="biblio-entry"><span class="biblio-title">
+							#parent_reference_results.Publisher#</a></span></span>
+						</td>
+					</tr>	
+					<tr>
+						<th scope="row">Place Published</th>
+						<td>
+							<span class="biblio-entry"><span class="biblio-title">
+							#parent_reference_results.PlacePublished#</a></span></span>
+						</td>
+					</tr>	
+					<tr>
+						<th scope="row">Date Published</th>
+						<td>
+							<span class="biblio-entry"><span class="biblio-title">
+							#parent_reference_results.DatePublished#</a></span></span>
+						</td>
+					</tr>	
 				</tbody>
 				</table>
 			</cfif>
@@ -495,9 +519,11 @@
 			<cfset safe_title = Replace(safe_title,chr(10)," ","ALL")>
 			<cfset safe_title = Replace(safe_title,chr(13)," ","ALL")>
 			<cfset safe_title = Replace(safe_title,"  "," ","ALL")>
+			<cfset safe_title = Replace(safe_title,'"','\"',"ALL")>
 			<cfset safe_citation = Replace(CitationDetails,"/","\/","ALL")>
 			<cfset safe_clean_display = Replace(cleandisplay,chr(10)," ","ALL")>
 			<cfset safe_clean_display = Replace(safe_clean_display,chr(13)," ","ALL")>
+			<cfset safe_clean_display = Replace(safe_clean_display,'"','\"',"ALL")>
 			
 			
 			

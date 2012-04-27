@@ -1,3 +1,11 @@
+/*
+
+LAST MODIFIED: 4/27/2012 - Whitton - prevented dual parent entry for unregistered parents, and cleared new parent author.
+
+*/
+
+
+
 $().ready(function() {
 	//add an onclick to the authorship radio button to disable/enable the author(s) form field	
 	$("#new_name_is_authorship_identical_0").click(function () {
@@ -46,6 +54,15 @@ $().ready(function() {
 			} //end else
 	});
 	
+	//make sure the button is cleared and enabled
+	$("#btn_register_name").attr("disabled", false);
+	//unbind any existing click
+	$('#btn_register_name').unbind('click');
+	//remove the working gif
+	$('.working_gif').remove();
+	//reset the text
+	document.getElementById("btn_register_name").innerHTML = "Register Nomenclatural Act";
+	
 	
 	
 	//add an onchange event to the btn_register_name button to submit the new name
@@ -56,7 +73,7 @@ $().ready(function() {
 		//change the button text to working
 		document.getElementById("btn_register_name").innerHTML = "working...";
 		//create a visual cue to show that something is happening
-		$('#btn_register_name').after('<img src="/images/autocomplete-loading.gif" alt="working..." />');
+		$('#btn_register_name').after('<img class="working_gif" src="/images/autocomplete-loading.gif" alt="working..." />');
 			
 		var insert_acts = submit_new_name({
 				data: {
@@ -165,7 +182,6 @@ $().ready(function() {
 
 function protonym_lookup_autocomplete_action(ui) {
 	if(ui.item.id==0){
-		document.getElementById("btn_register_parent").innerHTML = "Create Parent Name";
 		$("parent_search_string").val('');
 		document.getElementById("ProtonymUUID").value=ui.item.protonymuuid;
 		document.getElementById("new_name_spelling").value=ui.item.namestring;
@@ -180,6 +196,15 @@ function protonym_lookup_autocomplete_action(ui) {
 			document.getElementById("new_parent_original_spelling").value = new_value;	
 			document.getElementById("new_parent_current_spelling").value = new_value;	
 			document.getElementById("new_parent_name_display_layer").innerHTML = new_value;
+			
+			document.getElementById("parent_authors").value = '';	
+			
+			
+			//make sure the button is not disabled and the text is reset
+			$("#btn_register_parent").attr("disabled", false); 
+			document.getElementById("btn_register_parent").innerHTML = "Create Parent Name";
+			$('.working_gif').remove();
+			
 			$( '#new_parent_name_layer' ).dialog( 'open' );
 			//$("#btn_show_new_name_form_genus").checked();
 				//alert("here");
@@ -187,8 +212,8 @@ function protonym_lookup_autocomplete_action(ui) {
 			}//end if genus
 			
 			//add a click function to the action button on the new parent name form
-			
-			
+			//remove any existing click events
+			$('#btn_register_parent').unbind('click');
 			
 			$("#btn_register_parent").click(function () { 
 				
@@ -196,8 +221,10 @@ function protonym_lookup_autocomplete_action(ui) {
 				document.getElementById("btn_register_parent").innerHTML = "working...";
 				
 				//add a visual cue
-				$("#btn_register_parent").after('<img src="/images/autocomplete-loading.gif" alt="working..." />');
+				$("#btn_register_parent").after('<img class="working_gif" src="/images/autocomplete-loading.gif" alt="working..." />');
 				
+				//disable the button
+				$("#btn_register_parent").attr("disabled", true); 
 				
 				//make sure the required fields are filled in
 				
@@ -257,10 +284,13 @@ function confirm_species_parent(register,rankgroup,taxonnamerankid){
 		$('input[id=btn_show_new_name_form_species]').click();
 	});
 		
+		
 	$("#btn_new_name_confirm_parent").button();
+	//unbind any existing click
+	$('#btn_new_name_confirm_parent').unbind('click');
 	//add the onclick action to this new confirmation button
 	$("#btn_new_name_confirm_parent").click(function () { 
-		//register the parent taxon name usage, ONLY IF coming from Autocomplete, NOT the RADIO butyton.
+		//register the parent taxon name usage, ONLY IF coming from Autocomplete, NOT the RADIO button.
 		if(register==1){//		DO NOT execute sp_EstablishProtonym or sp_AssignZooBankLSID at this time.
 			var IsFossil;
 			if(document.getElementById("is_fossil").checked) IsFossil = 1;
@@ -300,9 +330,17 @@ function confirm_species_parent(register,rankgroup,taxonnamerankid){
 			$("#new_nomenclatural_act_main_form_layer").show();
 			}//end else
 		$( '#form_part_new_name').slideDown();
+		
 		//clear the ProtonymUUID field
 		document.getElementById("ProtonymUUID").value="";
-		
+		//make sure the button is cleared and enabled
+		$("#btn_register_name").attr("disabled", false);
+		//remove the working gif
+		$('.working_gif').remove();
+		//reset the text
+		document.getElementById("btn_register_name").innerHTML = "Register Nomenclatural Act";
+		//make sure the spelling field is cleared
+		$("#new_name_spelling").val('');
 	});
 	
 }

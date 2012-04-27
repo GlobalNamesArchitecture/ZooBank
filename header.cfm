@@ -3,7 +3,7 @@
 <cfset cssFiles = ArrayNew(1)>
 <cfset ArrayAppend( cssFiles, "/admin/css/redmond/jquery-ui-1.8.16.custom.css" )>
 <cfset ArrayAppend( cssFiles, "/admin/css/zoobank.css" )>
-<cfset ArrayAppend( cssFiles, "/admin/css/dynamicCSS.css" )>
+<!---<cfset ArrayAppend( cssFiles, "/admin/css/dynamicCSS.css" )>--->
 <cfset ArrayAppend( cssFiles, "/admin/css/screen.css" )>
 <cfset jsFiles = ArrayNew(1)>
 	<cfset ArrayAppend( jsFiles, "/admin/js/zoobank.js" )>
@@ -49,7 +49,7 @@ type="text/javascript" charset="utf-8"></script>--->
 			<ul>
 				<cfif isdefined("session.username")>
 					<cfif session.username is not "">
-						<cfoutput><li>Logged in as <a href="/Editor">#session.username#</a></li></cfoutput>
+						<cfoutput><li>Logged in as <a href="/Editor">#session.user_display_name#</a></li></cfoutput>
 						<li><a href="/Register">register</a></li>
 					</cfif>
 				</cfif>
@@ -98,7 +98,7 @@ type="text/javascript" charset="utf-8"></script>--->
 	<div class="searchBar">
 		<div class="container">
 			<form action="/Search" id="form_general_search" method="get"><input type="text" class="search_input_field" id="search_term" name="search_term" lang="en" size="65">
-			<button type="button" id="btn_header_search" class="primaryAction small">Search</button><span id="search_error"></span></form>
+			<button type="button" id="btn_header_search" class="primaryAction small">Search</button><span id="search_error" class="search_error"></span></form>
 		</div>
 	</div></cfif><cfoutput>
 	<div class="container">

@@ -1,3 +1,17 @@
+<cfif Len(search_term) is 36 or Len(search_term) is 33 or find("urn:lsid:zoobank",search_term)><!--- it is a UUID or LSID--->
+	<cfinvoke component="gnub_services" method="get_zoobank_lsid" returnvariable="ZB_LSID_data">
+		<cfif Len(search_term) is 36 or Len(search_term) is 33>
+			<cfinvokeargument name="UUID" value="#search_term#">
+		<cfelse>
+			<cfinvokeargument name="LSID" value="#search_term#">
+		</cfif>
+	</cfinvoke>
+	<cfif ZB_LSID_data.recordcount is 1>
+		<cflocation url="/#search_term#">
+		<cfabort>
+	</cfif>
+	
+</cfif>
 
 <cfobject component="gnub_services" name="service">
 <cfinvoke component="#service#" method="get_author" returnvariable="author_results">

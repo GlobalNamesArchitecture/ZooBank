@@ -284,6 +284,8 @@ function submit_publication(new_pub_data){
 			Pages : new_pub_data.data.Pages,
 			Figures : new_pub_data.data.Figures,
 			DatePublished : new_pub_data.data.DatePublished,
+			Publisher : new_pub_data.data.Publisher,
+			PlacePublished : new_pub_data.data.PlacePublished,
 			Authors : new_pub_data.data.Authors,
 			ReferenceTypeID : new_pub_data.data.ReferenceTypeID,
 			LogUserName : new_pub_data.data.LogUserName,

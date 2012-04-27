@@ -13,6 +13,11 @@
 	  ZooBank is intended as the official registry of Zoological Nomenclature, 
 	  according to the International Commission on Zoological Nomenclature (ICZN). 
 	</p>
+	
+	<h3>&nbsp;&nbsp;&nbsp;&nbsp;Watch our Overview <a href="/VideoGuide">Video Here</a></h3><br />
+	
+	
+	
 	<h3>What Gets Registered in ZooBank?</h3>
 	<p>
 	  Currently, ZooBank accomodates the registration of four different kinds of data objects:

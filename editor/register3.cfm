@@ -326,7 +326,7 @@
 							<td><span id="current_repository_layer"></span></td>
 						</tr>
 						<tr id="pub_form_archive" style="display:none;">
-							<td class="entry_label">Online Archive *</label></td>
+							<td class="entry_label">Online Archive <em>*</em></label></td>
 							<td>
 							<select name="pub_archive" id="pub_archive" multiple>
 								<option value="">&nbsp;</option>

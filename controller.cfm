@@ -17,6 +17,13 @@
 		</cfif>
 	</cfif>
 	<cfset method = ListFirst(ListFirst(current_request_uri,"/"),".")>
+	
+	
+
+	
+	
+	
+	
 	<cftry>
 		<cfif Find("search_term",request.javax.servlet.forward.query_string)>
 			<cfset request_type = "search">
@@ -50,6 +57,35 @@
 		</cftry>
 	</cfif>
 	
+		<!--- see if the request URI is an LSID or a UUID--->
+	
+	<!--- urn:lsid:zoobank.org:act:79F2C0A7-8EB5-4055-87A7-15074405FF4E --->
+	<cfif find("urn:lsid:zoobank",current_request_uri)>
+		<cfset method = ListLast(current_request_uri,":")>	
+		<cfset format = "html">	
+		<cfif find(".json",current_request_uri)>
+			<cfset format = "json">	
+		</cfif>
+	</cfif>
+		
+	<cfif Len(method) is 36 or Len(method) is 33><!--- it is a UUID --->
+		<cfinvoke component="gnub_services" method="get_zoobank_lsid" returnvariable="ZB_LSID_data">
+			<cfinvokeargument name="UUID" value="#method#">
+		</cfinvoke>
+		<cfif ZB_LSID_data.recordcount is 0>
+			<cflocation url="/Search?search_term=#method#">
+			<cfabort>
+		<cfelse>
+			<cfset search_term = method>
+			<cfif ZB_LSID_data.ZooBankDomain is "Nomenclatural Act">			
+				<cfset method = "NomenclaturalActs">
+			<cfelseif ZB_LSID_data.ZooBankDomain is "Reference">			
+				<cfset method = "References">
+			<cfelseif ZB_LSID_data.ZooBankDomain is "Author">			
+				<cfset method = "Authors">
+			</cfif>		
+		</cfif>
+	</cfif>
 	
 	<cfif method is "References">
 		<cfheader
@@ -117,7 +153,7 @@
 		<cfinclude template="/authors.cfm">
 		<cfabort>
 	</cfif>
-	
+
 	<cfif method is "Agents">		
 		<cfheader
 		statuscode="200"
@@ -133,7 +169,7 @@
 		<cfinclude template="/help.cfm">
 		<cfabort>
 	</cfif>
-	<cfif method is "VideoGuideYouTube">
+	<cfif method is "VideoGuide">
 		<cfheader
 		statuscode="200"
 		statustext="ok"

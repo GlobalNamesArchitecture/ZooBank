@@ -23,7 +23,7 @@
 				publicKey="6LcXUdASAAAAAEJj-9vV5U6z95Z-Ye-4N4NxF0wt"></td>
 		</tr>
 		<tr>
-			<th colspan="2"><button class="primaryAction" id="btn_request_account" type="button">Request Account</button> [NOTE THIS FEATURE IS NOT YET ENABLED]</th>
+			<th colspan="2"><button class="primaryAction" id="btn_request_account" type="button">Request Account</button> <span style="font-weight:bolder;">[NOTE THIS FEATURE IS NOT YET ENABLED]</span></th>
 		</tr>
 	</table>
 	</form>

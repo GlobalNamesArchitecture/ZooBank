@@ -20,7 +20,7 @@
 	<cfinvokeargument name="Domain" value="ZooBank Publication">	
 </cfinvoke>
 <cfinvoke component="#services#" method="get_reference" returnvariable="last_pub_name">
-	<cfinvokeargument name="ReferenceUUID" value="#last_pub.UUID#">
+	<cfinvokeargument name="UUID" value="#last_pub.UUID#">
 </cfinvoke>
 <cfinvoke component="#services#" method="get_external_identifiers" returnvariable="total_authors">
 	<cfinvokeargument name="ResponseType" value="RecordCount">

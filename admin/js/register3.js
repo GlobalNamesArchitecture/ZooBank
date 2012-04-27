@@ -34,7 +34,8 @@ $().ready(function() {
 				}
 			}//end if electronic is checked
 		else document.getElementById("pub_year_explanation_text").innerHTML = "";
-	});//end change function on th eyear field
+		build_citation_preview();
+	});//end change function on the year field
 	
 	// enable the italicize button for italicized words in the article title
     $('#btn_create_italics').click(function(evt) {
@@ -131,8 +132,7 @@ function add_author_to_list(PKID,author_name,zblsid,new_author){
 		});
 		}, 250);//alert('should be displayed');
 	
-	build_author_citation_preview();
-	
+
 	//add the Finished button
 	//document.getElementById("action_button_layer").innerHTML = '<span style="text-align:center;"><button id="btn_finished_selecting_authors" type="button"><span class="ui-button-text">Finished Selecting Authors<\/span><\/button><\/span>';
 	$( "#btn_finished_selecting_authors" ).button();
@@ -174,6 +174,10 @@ function add_author_to_list(PKID,author_name,zblsid,new_author){
 	//document.getElementById("selected_author_instruction_layer").innerHTML = '<span class="form_instructions_text">Select all authors of the Published Work and place them in the correct sequence.<\/span><br \/>&nbsp;';
 	
 	//onclick="$( &quot;#accordion&quot; ).accordion( &quot;activate&quot; , 1 );$(&quot;#pub_search_form_layer&quot;).hide();"
+	build_author_citation_preview();
+	build_citation_preview();
+	//alert("here");
+	
 }//end function add_author_to_list
 
 function build_author_citation_preview(author_name){
@@ -185,7 +189,8 @@ function build_author_citation_preview(author_name){
 	for(i=0;i<author_sorted_array.length;i++){
 		//the id array is in the format author_id~author_name
 		id_name_array = author_sorted_array[i].split("~");
-		author_citation_content = author_citation_content + id_name_array[1] +';';
+		author_citation_content = author_citation_content + id_name_array[1]
+		if(i+1<author_sorted_array.length) author_citation_content = author_citation_content + ', ';
 		}//end for
 	document.getElementById("author_citation_preview").innerHTML = author_citation_content;
 	
@@ -201,7 +206,10 @@ function build_author_citation_preview(author_name){
 		}
 	//document.getElementById("author_search_span").innerHTML = author_search_label_html;
 	document.getElementById("registration_instruction_layer").innerHTML=registration_instruction_text;
-	}//end function build_author_citation_preview
+	
+	build_citation_preview();
+	
+}//end function build_author_citation_preview
 
 function remove_author(author_id){
 	//find the author to be removed in the current array
@@ -252,6 +260,8 @@ function remove_author(author_id){
 	}
 	//alert("launch find referece");
 	launch_find_reference();
+	//rebuild the citation_preview
+	build_citation_preview();
 }// end function remove_author
 
 //this function may no longe be needed based on how editing will be handled or if we allow a user to edit what they have already entered

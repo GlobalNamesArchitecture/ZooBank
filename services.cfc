@@ -29,7 +29,7 @@
  --->
 <!--- ----------------------------------------- --->
 <cfcomponent>
-	<cfset datasource = "gnub_taxonomer_sandbox"><!---taxonomer_sandbox--->
+	<cfset datasource = "taxonomer_sandbox"><!---taxonomer_sandbox - gnub_taxonomer_sandbox--->
 	<cffunction name="find_author" returntype="string" access="remote" returnformat="plain">
 		<cfargument name="term" type="string" required="no" default="">
 		<cfargument name="FamilyName" type="string" required="no" default="">
@@ -614,7 +614,10 @@
 		<cfargument name="Volume" type="string" required="yes">
 		<cfargument name="Number" type="string" required="yes">
 		<cfargument name="Pages" type="string" required="yes">
-		<cfargument name="Figures" type="string" required="yes">
+		<cfargument name="Figures" type="string" required="no">
+		<cfargument name="Edition" type="string" required="no">
+		<cfargument name="Publisher" type="string" required="no">
+		<cfargument name="PlacePublished" type="string" required="no">
 		<cfargument name="DatePublished" type="string" required="yes">
 		<cfargument name="Authors" type="string" required="no" hint="A comma delimited list of Agent UUIDs">
 		<cfargument name="LogUserName" type="string" required="yes" hint="The user name of the user entering the reference">
@@ -645,7 +648,7 @@
 		
 		<!---<cftransaction>--->
 			<cfset update_author_uuid_list = "">
-			<!---check to see that each author exists, if not create the agend and get the UUID --->
+			<!---check to see that each author exists, if not create the agent and get the UUID --->
 			<cfif Arguments.Authors is not "">
 				<cfset author_count = 1>				
 				<cfif Left(author_name_list,1) is "|">
@@ -659,13 +662,13 @@
 							<cfinvokeargument name="FamilyName" value="#Trim(ListLast(ListFirst(temp_author_name),"~"))#">
 							<cfinvokeargument name="GivenName" value="#Trim(Listlast(temp_author_name))#">
 							<cfinvokeargument name="LogUserName" value="#Arguments.LogUserName#">
-							<cfinvokeargument name="LinkID" value="#ListGetAt(Arguments.Authors,author_count,",")#">
+							<cfinvokeargument name="LinkID" value="#current_author_uuid#">
 							<cfinvokeargument name="no_verify" value="1">						
 						</cfinvoke>
 						<cfset current_author_uuid = new_author_uuid.UUID>
 					<cfelse><!---not an alias of a registered person, check to see if they are already registered--->					
 						<cfinvoke component="gnub_services" method="get_author" returnvariable="author_details">
-							<cfinvokeargument name="UUID" value="#ListGetAt(Arguments.Authors,author_count,",")#">
+							<cfinvokeargument name="UUID" value="#current_author_uuid#">
 						</cfinvoke>
 						<!---<cfdump var="#author_details#">--->
 						<cfif author_details.recordcount is 0><!---insert the author --->
@@ -710,8 +713,20 @@
 					@Figures	= <cfqueryparam cfsqltype="cf_sql_varchar" value="#Arguments.Figures#">,
 					@DatePublished	= <cfqueryparam cfsqltype="cf_sql_varchar" value="#Trim(Arguments.DatePublished)#">,
 					@Authors	= <cfqueryparam cfsqltype="cf_sql_varchar" value="#Replace(update_author_uuid_list,",","|","ALL")#|">,
-					@LogUserName = <cfqueryparam cfsqltype="cf_sql_varchar" value="#Arguments.LogUserName#">					
+					@LogUserName = <cfqueryparam cfsqltype="cf_sql_varchar" value="#Arguments.LogUserName#">	
+					<cfif Publisher is not "">, @Publisher = 	<cfqueryparam cfsqltype="cf_sql_varchar" value="#Arguments.Publisher#"></cfif>		
+					<cfif Edition is not "">, @Edition = 	<cfqueryparam cfsqltype="cf_sql_varchar" value="#Arguments.Edition#"></cfif>		
+					<cfif PlacePublished is not "">, @PlacePublished = 	<cfqueryparam cfsqltype="cf_sql_varchar" value="#Arguments.PlacePublished#"></cfif>		
 				</cfquery>
+				
+				<!---<cfdump var="#insert_reference#">--->
+				
+				<!---get the citation for the new entry for display purposes--->			
+				<cfinvoke component="gnub_services" method="get_reference" returnvariable="new_citation_value">
+					<cfinvokeargument name="UUID" value="#insert_reference.UUID#">
+				</cfinvoke>
+				<!---<cfdump var="#new_citation_value#"><cfabort>--->
+				
 				
 				<!---<cfdump var="#insert_reference#"><cfabort>--->
 				<!--- Check to see if any identifiers have been passed.  If so, create the identifiers --->				
@@ -773,10 +788,7 @@
 					</cfinvoke>			
 				</cfif>
 				
-				<!---get the cheat citation for the new entry for display purposes--->			
-				<cfinvoke method="get_reference" component="gnub_services" returnvariable="new_citation_value">
-					<cfinvokeargument name="ReferenceUUID" value="#insert_reference.UUID#">
-				</cfinvoke>			
+				
 				<!---set the LSID--->
 				<cfinvoke method="create_LSID" returnvariable="new_reference_LSID">
 					<cfinvokeargument name="UUID" value="#insert_reference.UUID#">
@@ -789,7 +801,7 @@
 				<cfif Arguments.ReferenceTypeID is 39>
 					<cfset function_result.new_citation = "<em>#new_citation_value.FullTitle#</em>">
 				<cfelse>
-					<cfset function_result.new_citation = "#new_citation_value.Authors# #new_citation_value.Year# #new_citation_value.FullTItle# #new_citation_value.CitationDetails#">
+					<cfset function_result.new_citation = "#new_citation_value.authors# #new_citation_value.year# #new_citation_value.FullTitle# #new_citation_value.citationdetails#">
 				</cfif>
 				<cfset function_result.message = "Success">
 				<cfset function_result.lsid = new_reference_LSID>
@@ -925,7 +937,7 @@
 			<cfif Arguments.ReferenceUUID is not "">
 				<!--- get the reference details to populate the response with authors and year--->
 				<cfinvoke method="get_reference" component="gnub_services" returnvariable="get_reference_data">
-					<cfinvokeargument name="ReferenceUUID" value="#Arguments.ReferenceUUID#">
+					<cfinvokeargument name="UUID" value="#Arguments.ReferenceUUID#">
 					<cfinvokeargument name="PublishedOnly" value="0">
 				</cfinvoke>
 				<cfset result.year = get_reference_data.year>

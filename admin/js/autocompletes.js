@@ -87,6 +87,7 @@ $( "#author_search_string" ).autocomplete({
                 }
             });
         },		
+		autoFocus: true,
 		minLength: 4,
 		delay: 400,
 		select: function(event, ui) {
@@ -95,7 +96,7 @@ $( "#author_search_string" ).autocomplete({
 				else document.getElementById("ParentReferenceUUID").value=ui.item.referenceid;
 				}
 			else journal_lookup_autocomplete_action(ui);
-		}//end select event	
+		}
 	});//end journal search autocomplete
 	
 	
@@ -170,6 +171,7 @@ $( "#author_search_string" ).autocomplete({
 				else document.getElementById("LanguageID").value=ui.item.id;
 				}
 			else language_lookup_autocomplete_action(ui);
+			return false;
 			
 		}			
 	});//end language autocomplete
